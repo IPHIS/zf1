@@ -15,8 +15,8 @@
  * @category   Zend
  * @package    Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @version    $Id$
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @version    $Id: Dojo.php 24593 2012-01-05 20:35:02Z matthew $
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
@@ -31,7 +31,7 @@ require_once 'Zend/Registry.php';
  *
  * @package    Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Dojo_View_Helper_Dojo
@@ -41,6 +41,7 @@ class Zend_Dojo_View_Helper_Dojo
      */
     const PROGRAMMATIC_SCRIPT = 1;
     const PROGRAMMATIC_NOSCRIPT = -1;
+	const USE_AMD = 1;
     /**#@-*/
 
     /**
@@ -57,6 +58,11 @@ class Zend_Dojo_View_Helper_Dojo
      * @var bool Whether or not dijits should be declared programmatically
      */
     protected static $_useProgrammatic = true;
+
+    /**
+     * @var bool Whether or not to use AMD
+     */
+    protected static $_useAMD = false;
 
     /**
      * Initialize helper
@@ -145,6 +151,16 @@ class Zend_Dojo_View_Helper_Dojo
     }
 
     /**
+     * Set whether to use AMD
+     *
+     * @return void
+     */
+    public static function setUseAMD()
+    {
+        self::$_useAMD = self::USE_AMD;
+    }
+
+    /**
      * Should dijits be created declaratively?
      *
      * @return bool
@@ -172,5 +188,15 @@ class Zend_Dojo_View_Helper_Dojo
     public static function useProgrammaticNoScript()
     {
         return (self::PROGRAMMATIC_NOSCRIPT === self::$_useProgrammatic);
+    }
+
+    /**
+     * Should AMD be used?
+     *
+     * @return bool
+     */
+	public static function useAMD()
+	{
+        return (false !== self::$_useAMD);
     }
 }
