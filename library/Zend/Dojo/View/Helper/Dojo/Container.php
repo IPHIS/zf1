@@ -430,7 +430,7 @@ class Zend_Dojo_View_Helper_Dojo_Container
     public function setCdnVersion($version = null)
     {
         $this->enable();
-        if (preg_match('/^[1-9]\.[0-9]{1,2}(\.[0-9]{1,2})?$/', $version)) {
+        if (preg_match('/^[1-9]\.[0-9](\.[0-9])?$/', $version)) {
             $this->_cdnVersion = $version;
         }
         return $this;
@@ -856,6 +856,8 @@ class Zend_Dojo_View_Helper_Dojo_Container
     public function registerDijitLoader()
     {
         if (!$this->_dijitLoaderRegistered) {
+            if (!Zend_Dojo_View_Helper_Dojo::useAMD()) {
+                $this->requireModule('dojo.parser');
             $js =<<<EOJ
 function() {
     dojo.forEach(zendDijits, function(info) {
@@ -867,8 +869,8 @@ function() {
     dojo.parser.parse();
 }
 EOJ;
-            $this->requireModule('dojo.parser');
             $this->_addZendLoad($js);
+            }
             $this->addJavascript('var zendDijits = ' . $this->dijitsToJson() . ';');
             $this->_dijitLoaderRegistered = true;
         }
@@ -1026,7 +1028,7 @@ EOJ;
             return '';
         }
 
-        $stylesheets = array_reverse($stylesheets);
+        array_reverse($stylesheets);
         $style = '<style type="text/css">' . PHP_EOL
                . (($this->_isXhtml) ? '<!--' : '<!--') . PHP_EOL;
         foreach ($stylesheets as $stylesheet) {
@@ -1048,6 +1050,18 @@ EOJ;
         $djConfigValues = $this->getDjConfig();
         if (empty($djConfigValues)) {
             return '';
+        }
+
+        if ($dojoConfigValues['async'] = Zend_Dojo_View_Helper_Dojo::useAMD()) {
+            $local_relative_path = $this->_getLocalRelativePath();
+            $dojoPackages = array(array('name' => 'dojo', 'location' => $local_relative_path . '/dojo'), array('name' => 'dijit', 'location' => $local_relative_path . '/dijit'),
+                array('name' => 'dojox', 'location' => $local_relative_path . '/dojox'));
+            if (!isset($dojoConfigValues['custom_packages']) || empty ($dojoConfigValues['custom_packages'])) {
+                $dojoConfigValues['packages'] = $dojoPackages;
+            } else {
+                $dojoConfigValues['packages'] = array_merge($dojoPackages, $dojoConfigValues['custom_packages']);
+            }
+            unset($dojoConfigValues['custom_packages']);
         }
 
         require_once 'Zend/Json.php';
@@ -1130,10 +1144,10 @@ EOJ;
 
         $modules = $this->getModules();
         if (!empty($modules)) {
+            if (!Zend_Dojo_View_Helper_Dojo::useAMD()) {
             foreach ($modules as $module) {
                 $js[] = 'dojo.require("' . $this->view->escape($module) . '");';
             }
-        }
 
         $onLoadActions = array();
         // Get Zend specific onLoad actions; these will always be first to
@@ -1145,6 +1159,53 @@ EOJ;
         // Get all other onLoad actions
         foreach ($this->getOnLoadActions() as $callback) {
             $onLoadActions[] = 'dojo.addOnLoad(' . $callback . ');';
+        }
+            } else {
+                $m = $s = array();
+                if (Zend_Registry::isRegistered('dojoLayer') && is_array(Zend_Registry::get('dojoLayer'))) {
+                    $js[] = "require(['" . join("','", Zend_Registry::get('dojoLayer')) . "'], function () {";
+                }
+                $js[] = 'require(["dojo/dom", "dojo/ready", "dojo/_base/array", "dojo/dom-attr", "dojo/_base/lang", "dojo/parser", "dijit/registry"';
+                foreach ($modules as $module) {
+                    if (!isset($m[$module])) {
+                        $js[] = ',"' . $this->view->escape(str_replace('.', '/', $module)) . '"';
+                        $m[$module] = str_replace(array('.', '/'), array('', ''), $module);
+                        if (stripos($m[$module], 'store') !== false) {
+                            $s[] = $m[$module];
+                        }
+                    }
+                }
+
+                /* This sets up the stores */
+                $js[] = '],function(dom,ready,dojoArray,domAttr,lang,parser,registry';
+                if (!empty($m)) {
+                    $js[] = ',' . join(',', $m);
+                }
+                $js[] = '){ready(function() {';
+                foreach ($this->_getZendLoadActions() as $callback) {
+                    $js[] = str_replace($modules, $m, $callback);
+                }
+
+                /* Additional onLoads */
+                foreach ($this->getOnLoadActions() as $callback) {
+                    $js[] = str_replace($modules, $m, $callback);
+                }
+                $js[] = <<<EOJAMD
+    dojoArray.forEach(zendDijits, function(info) {
+        var n = dom.byId(info.id);
+        if (null != n) {
+            domAttr.set(n, lang.mixin({ id: info.id }, info.params));
+        }
+    });
+    parser.parse();
+});
+EOJAMD;
+                $js[] = '});';
+                if (Zend_Registry::isRegistered('dojoLayer') && is_array(Zend_Registry::get('dojoLayer'))) {
+                    $js[] = '});';
+                }
+                $onLoadActions = array();
+            }
         }
 
         $javascript = implode("\n    ", $this->getJavascript());
