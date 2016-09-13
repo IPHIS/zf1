@@ -461,7 +461,7 @@ class Zend_Session extends Zend_Session_Abstract
         if (!self::$_unitTestEnabled && defined('SID')) {
             /** @see Zend_Session_Exception */
             require_once 'Zend/Session/Exception.php';
-            throw new Zend_Session_Exception('session has already been started by session.auto-start or session_start()');
+            //throw new Zend_Session_Exception('session has already been started by session.auto-start or session_start()');
         }
 
         /**
@@ -479,7 +479,7 @@ class Zend_Session extends Zend_Session_Abstract
                 set_error_handler(array('Zend_Session_Exception', 'handleSessionStartError'), $errorLevel);
             }
 
-            $startedCleanly = session_start();
+            $startedCleanly = @session_start();
 
             if (self::$_throwStartupExceptions) {
                 restore_error_handler();
@@ -489,10 +489,10 @@ class Zend_Session extends Zend_Session_Abstract
                 if (self::$_throwStartupExceptions) {
                     set_error_handler(array('Zend_Session_Exception', 'handleSilentWriteClose'), $errorLevel);
                 }
-                session_write_close();
+                //session_write_close();
                 if (self::$_throwStartupExceptions) {
                     restore_error_handler();
-                    throw new Zend_Session_Exception(__CLASS__ . '::' . __FUNCTION__ . '() - ' . Zend_Session_Exception::$sessionStartError);
+                    //throw new Zend_Session_Exception(__CLASS__ . '::' . __FUNCTION__ . '() - ' . Zend_Session_Exception::$sessionStartError);
                 }
             }
         }
@@ -729,7 +729,7 @@ class Zend_Session extends Zend_Session_Abstract
             parent::$_writable = false;
         }
 
-        session_write_close();
+        @session_write_close();
         self::$_writeClosed = true;
     }
 
@@ -755,7 +755,7 @@ class Zend_Session extends Zend_Session_Abstract
             parent::$_writable = false;
         }
 
-        session_destroy();
+        @session_destroy();
         self::$_destroyed = true;
 
         if ($remove_cookie) {
