@@ -65,6 +65,9 @@ class Zend_Dojo_View_Helper_SimpleTextarea extends Zend_Dojo_View_Helper_Dijit
             $attribs['id']    = $id;
         }
         $attribs['name']  = $id;
+        if (!$params['required']) {
+            unset($params['required']);
+        }
 
         $attribs = $this->_prepareDijit($attribs, $params, 'textarea');
 
