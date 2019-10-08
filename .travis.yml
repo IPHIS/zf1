@@ -14,6 +14,7 @@ install:
 
 services:
   - memcached
+  - mysql
 
 before_script:
   - if [[ "$TRAVIS_PHP_VERSION" != "5.2" ]]; then travis_retry composer self-update; fi
