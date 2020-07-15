@@ -334,7 +334,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit_Framework_TestCase
         $json = $this->service->toJson();
         $smd  = Zend_Json::decode($json);
 
-        $this->assertTrue(array_key_exists('foo', $smd));
+        $this->assertTrue(array_key_exists_wrapper('foo', $smd));
         $this->assertTrue(is_array($smd['foo']));
 
         $this->validateSmdArray($smd['foo']);
@@ -354,13 +354,13 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit_Framework_TestCase
 
     public function validateSmdArray(array $smd)
     {
-        $this->assertTrue(array_key_exists('transport', $smd));
+        $this->assertTrue(array_key_exists_wrapper('transport', $smd));
         $this->assertEquals('POST', $smd['transport']);
 
-        $this->assertTrue(array_key_exists('envelope', $smd));
+        $this->assertTrue(array_key_exists_wrapper('envelope', $smd));
         $this->assertEquals(Zend_Json_Server_Smd::ENV_JSONRPC_2, $smd['envelope']);
 
-        $this->assertTrue(array_key_exists('parameters', $smd));
+        $this->assertTrue(array_key_exists_wrapper('parameters', $smd));
         $params = $smd['parameters'];
         $this->assertEquals(3, count($params));
         $param = array_shift($params);
@@ -370,7 +370,7 @@ class Zend_Json_Server_Smd_ServiceTest extends PHPUnit_Framework_TestCase
         $param = array_shift($params);
         $this->assertEquals('object', $param['type']);
 
-        $this->assertTrue(array_key_exists('returns', $smd));
+        $this->assertTrue(array_key_exists_wrapper('returns', $smd));
         $this->assertEquals('boolean', $smd['returns']);
     }
 }

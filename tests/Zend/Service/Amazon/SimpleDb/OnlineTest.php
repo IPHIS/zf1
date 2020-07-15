@@ -164,8 +164,8 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             // Multiple attributes
             $results = $this->request('getAttributes', array($domainName, $itemName));
             $this->assertEquals(2, count($results));
-            $this->assertTrue(array_key_exists($attributeName1, $results));
-            $this->assertTrue(array_key_exists($attributeName2, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName1, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName2, $results));
             $this->assertEquals($attributeValue1, current($results[$attributeName1]->getValues()));
             $this->assertEquals($attributeValue2, current($results[$attributeName2]->getValues()));
 
@@ -197,8 +197,8 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             // Multiple attributes
             $results = $this->request('getAttributes', array($domainName, $itemName));
             $this->assertEquals(2, count($results));
-            $this->assertTrue(array_key_exists($attributeName1, $results));
-            $this->assertTrue(array_key_exists($attributeName2, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName1, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName2, $results));
             $this->assertEquals($attributes[$attributeName1], $results[$attributeName1]);
             $this->assertEquals($attributes[$attributeName2], $results[$attributeName2]);
             $this->request('deleteDomain', array($domainName));
@@ -250,19 +250,19 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
 
             $result = $this->request('getAttributes', array($domainName, $itemName1, $attributeName1));
 
-            $this->assertTrue(array_key_exists($attributeName1, $result));
+            $this->assertTrue(array_key_exists_wrapper($attributeName1, $result));
             $this->assertEquals($attributeName1, $result[$attributeName1]->getName());
             $this->assertEquals($attributeValue1, current($result[$attributeName1]->getValues()));
             $result = $this->request('getAttributes', array($domainName, $itemName2, $attributeName4));
-            $this->assertTrue(array_key_exists($attributeName4, $result));
+            $this->assertTrue(array_key_exists_wrapper($attributeName4, $result));
             $this->assertEquals(2, count($result[$attributeName4]->getValues()));
             $result = $this->request('getAttributes', array($domainName, $itemName2));
             $this->assertEquals(2, count($result));
-            $this->assertTrue(array_key_exists($attributeName3, $result));
+            $this->assertTrue(array_key_exists_wrapper($attributeName3, $result));
             $this->assertEquals($attributeName3, $result[$attributeName3]->getName());
             $this->assertEquals(1, count($result[$attributeName3]));
             $this->assertEquals($attributeValue3, current($result[$attributeName3]->getValues()));
-            $this->assertTrue(array_key_exists($attributeName4, $result));
+            $this->assertTrue(array_key_exists_wrapper($attributeName4, $result));
             $this->assertEquals($attributeName4, $result[$attributeName4]->getName());
             $this->assertEquals(2, count($result[$attributeName4]->getValues()));
             $this->assertEquals(array($attributeValue4, $attributeValue5), $result[$attributeName4]->getValues());
@@ -326,10 +326,10 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
 
             $results = $this->request('getAttributes', array($domainName, $itemName));
             $this->assertEquals(4, count($results));
-            $this->assertTrue(array_key_exists($attributeName1, $results));
-            $this->assertTrue(array_key_exists($attributeName2, $results));
-            $this->assertTrue(array_key_exists($attributeName3, $results));
-            $this->assertTrue(array_key_exists($attributeName4, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName1, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName2, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName3, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName4, $results));
             $this->assertEquals($attributeValue1, current($results[$attributeName1]->getValues()));
             $this->assertEquals($attributeValue2, current($results[$attributeName2]->getValues()));
             $this->assertEquals($attributeValue3, current($results[$attributeName3]->getValues()));
@@ -339,9 +339,9 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
 
             $results = $this->request('getAttributes', array($domainName, $itemName));
             $this->assertEquals(3, count($results));
-            $this->assertTrue(array_key_exists($attributeName2, $results));
-            $this->assertTrue(array_key_exists($attributeName3, $results));
-            $this->assertTrue(array_key_exists($attributeName4, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName2, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName3, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName4, $results));
             $this->assertEquals($attributeValue2, current($results[$attributeName2]->getValues()));
             $this->assertEquals($attributeValue3, current($results[$attributeName3]->getValues()));
             $this->assertEquals($attributeValue4, current($results[$attributeName4]->getValues()));
@@ -350,7 +350,7 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
 
             $results = $this->request('getAttributes', array($domainName, $itemName));
             $this->assertEquals(1, count($results));
-            $this->assertTrue(array_key_exists($attributeName4, $results));
+            $this->assertTrue(array_key_exists_wrapper($attributeName4, $results));
             $this->assertEquals($attributeValue4, current($results[$attributeName4]->getValues()));
 
 
@@ -437,19 +437,19 @@ class Zend_Service_Amazon_SimpleDb_OnlineTest extends PHPUnit_Framework_TestCase
             $metadata = $this->request('domainMetadata', array($domainName));
             $this->assertTrue(is_array($metadata));
             $this->assertGreaterThan(0, count($metadata));
-            $this->assertTrue(array_key_exists('ItemCount', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('ItemCount', $metadata));
             $this->assertEquals(0, (int)$metadata['ItemCount']);
-            $this->assertTrue(array_key_exists('ItemNamesSizeBytes', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('ItemNamesSizeBytes', $metadata));
             $this->assertEquals(0, (int)$metadata['ItemNamesSizeBytes']);
-            $this->assertTrue(array_key_exists('AttributeNameCount', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('AttributeNameCount', $metadata));
             $this->assertEquals(0, (int)$metadata['AttributeNameCount']);
-            $this->assertTrue(array_key_exists('AttributeValueCount', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('AttributeValueCount', $metadata));
             $this->assertEquals(0, (int)$metadata['AttributeValueCount']);
-            $this->assertTrue(array_key_exists('AttributeNamesSizeBytes', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('AttributeNamesSizeBytes', $metadata));
             $this->assertEquals(0, (int)$metadata['AttributeNamesSizeBytes']);
-            $this->assertTrue(array_key_exists('AttributeValuesSizeBytes', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('AttributeValuesSizeBytes', $metadata));
             $this->assertEquals(0, (int)$metadata['AttributeValuesSizeBytes']);
-            $this->assertTrue(array_key_exists('Timestamp', $metadata));
+            $this->assertTrue(array_key_exists_wrapper('Timestamp', $metadata));
 
             // Delete the domain
             $this->request('deleteDomain', array($domainName));

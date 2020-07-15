@@ -175,7 +175,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
     {
         $this->helper->registerModulePath('custom', '../custom');
         $paths = $this->helper->getModulePaths();
-        $this->assertTrue(array_key_exists('custom', $paths), var_export($paths, 1));
+        $this->assertTrue(array_key_exists_wrapper('custom', $paths), var_export($paths, 1));
         $this->assertContains('../custom', $paths);
     }
 
@@ -185,7 +185,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
         $this->helper->registerModulePath('custom', '../custom');
         $paths = $this->helper->getModulePaths();
         $this->assertEquals(1, count($paths));
-        $this->assertTrue(array_key_exists('custom', $paths));
+        $this->assertTrue(array_key_exists_wrapper('custom', $paths));
         $this->assertContains('../custom', $paths);
     }
 
@@ -276,7 +276,7 @@ class Zend_Dojo_View_Helper_DojoTest extends PHPUnit_Framework_TestCase
         $this->helper->setDjConfig(array('parseOnLoad' => 'true'));
         $config = $this->helper->getDjConfig();
         $this->assertTrue(is_array($config));
-        $this->assertTrue(array_key_exists('parseOnLoad', $config));
+        $this->assertTrue(array_key_exists_wrapper('parseOnLoad', $config));
         $this->assertEquals('true', $config['parseOnLoad']);
     }
 
@@ -535,12 +535,12 @@ function() {
         $dijit = array_shift($dijits);
         $this->assertTrue(is_array($dijit));
         $this->assertEquals(2, count($dijit));
-        $this->assertTrue(array_key_exists('id', $dijit));
-        $this->assertTrue(array_key_exists('params', $dijit));
+        $this->assertTrue(array_key_exists_wrapper('id', $dijit));
+        $this->assertTrue(array_key_exists_wrapper('params', $dijit));
         $this->assertEquals('foo', $dijit['id']);
         $this->assertTrue(is_array($dijit['params']));
         $this->assertEquals(1, count($dijit['params']));
-        $this->assertTrue(array_key_exists('dojoType', $dijit['params']));
+        $this->assertTrue(array_key_exists_wrapper('dojoType', $dijit['params']));
         $this->assertEquals('dijit.form.Form', $dijit['params']['dojoType']);
     }
 
@@ -613,7 +613,7 @@ function() {
         $params = $this->helper->getDijit('foo');
         $this->assertTrue(is_array($params));
         $this->assertEquals(1, count($params), var_export($params, 1));
-        $this->assertTrue(array_key_exists('dojoType', $params));
+        $this->assertTrue(array_key_exists_wrapper('dojoType', $params));
         $this->assertEquals('dijit.form.Form', $params['dojoType']);
     }
 
@@ -648,7 +648,7 @@ function() {
         $keys  = array();
         foreach ($array as $dijit) {
             $keys[] = $dijit['id'];
-            $this->assertTrue(array_key_exists('params', $dijit));
+            $this->assertTrue(array_key_exists_wrapper('params', $dijit));
             $this->assertTrue(is_array($dijit['params']));
         }
         $this->assertSame(array('foo', 'bar'), $keys);

@@ -254,8 +254,8 @@ class Zend_Ldap_Node_SchemaTest extends Zend_Ldap_OnlineTestCase
 
         $objectClasses=$this->_schema->getObjectClasses();
 
-        if (!array_key_exists('certificationAuthority', $objectClasses) ||
-                !array_key_exists('certificationAuthority-V2', $objectClasses)) {
+        if (!array_key_exists_wrapper('certificationAuthority', $objectClasses) ||
+                !array_key_exists_wrapper('certificationAuthority-V2', $objectClasses)) {
             $this->markTestSkipped('This requires OpenLDAP core schema');
         }
 

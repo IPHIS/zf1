@@ -442,7 +442,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         $messages = $hostnameValidator->getMessages();
         $found = false;
         foreach ($messages as $code => $message) {
-            if (array_key_exists($code, $translations)) {
+            if (array_key_exists_wrapper($code, $translations)) {
                 $this->assertEquals($translations[$code], $message);
                 $found = true;
                 break;
@@ -494,7 +494,7 @@ class Zend_Validate_EmailAddressTest extends PHPUnit_Framework_TestCase
         $messages = $this->_validator->getMessages();
         $found = false;
         foreach ($messages as $code => $message) {
-            if (array_key_exists($code, $translations)) {
+            if (array_key_exists_wrapper($code, $translations)) {
                 $this->assertEquals($translations[$code], $message);
                 $found = true;
                 break;

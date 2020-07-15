@@ -227,7 +227,7 @@ class Zend_Application_Module_BootstrapTest extends PHPUnit_Framework_TestCase
         foreach ($modules as $bootstrap) {
             $loader = $bootstrap->getPluginLoader();
             $paths  = $loader->getPaths();
-            $this->assertTrue(array_key_exists('ZfModuleBootstrap_Resource_', $paths));
+            $this->assertTrue(array_key_exists_wrapper('ZfModuleBootstrap_Resource_', $paths));
         }
     }
 }

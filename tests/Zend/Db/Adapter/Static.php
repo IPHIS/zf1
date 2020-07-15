@@ -89,7 +89,7 @@ class Zend_Db_Adapter_Static extends Zend_Db_Adapter_Abstract
     protected function _checkRequiredOptions(array $config)
     {
         // we need at least a dbname
-        if (! array_key_exists('dbname', $config)) {
+        if (! array_key_exists_wrapper('dbname', $config)) {
             require_once 'Zend/Db/Adapter/Exception.php';
             throw new Zend_Db_Adapter_Exception("Configuration must have a key for 'dbname' that names the database instance");
         }

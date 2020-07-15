@@ -101,8 +101,8 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
                ->addPrefixPath('Zend_Loader', $this->libPath . '/Zend');
         $paths = $loader->getPaths();
         $this->assertEquals(2, count($paths));
-        $this->assertTrue(array_key_exists('Zend_View_', $paths));
-        $this->assertTrue(array_key_exists('Zend_Loader_', $paths));
+        $this->assertTrue(array_key_exists_wrapper('Zend_View_', $paths));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Loader_', $paths));
         $this->assertEquals(1, count($paths['Zend_View_']));
         $this->assertEquals(2, count($paths['Zend_Loader_']));
     }
@@ -127,8 +127,8 @@ class Zend_Loader_PluginLoaderTest extends PHPUnit_Framework_TestCase
                ->addPrefixPath('Zend_Loader', $this->libPath . '/Zend');
         $paths = $loader->getPaths();
         $this->assertEquals(2, count($paths));
-        $this->assertTrue(array_key_exists('Zend_View_', $paths));
-        $this->assertTrue(array_key_exists('Zend_Loader_', $paths));
+        $this->assertTrue(array_key_exists_wrapper('Zend_View_', $paths));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Loader_', $paths));
         $this->assertEquals(1, count($paths['Zend_View_']));
         $this->assertEquals(2, count($paths['Zend_Loader_']));
     }

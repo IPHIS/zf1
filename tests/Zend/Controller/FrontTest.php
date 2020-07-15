@@ -601,7 +601,7 @@ class Zend_Controller_FrontTest extends PHPUnit_Framework_TestCase
         $this->_controller->removeControllerDirectory('foo');
         $test = $this->_controller->getControllerDirectory();
         $this->assertNotEquals($controllerDirs, $test);
-        $this->assertFalse(array_key_exists('foo', $test));
+        $this->assertFalse(array_key_exists_wrapper('foo', $test));
     }
 
     public function testAddModuleDirectoryThrowsExceptionForInvalidDirectory()

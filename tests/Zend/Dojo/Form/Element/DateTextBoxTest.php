@@ -113,11 +113,11 @@ class Zend_Dojo_Form_Element_DateTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $this->assertFalse($this->element->getAmPm());
         $constraints = $this->element->getConstraints();
-        $this->assertFalse(array_key_exists('am,pm', $constraints));
+        $this->assertFalse(array_key_exists_wrapper('am,pm', $constraints));
         $this->element->setAmPm(true);
         $this->assertTrue($this->element->getAmPm());
         $constraints = $this->element->getConstraints();
-        $this->assertTrue(array_key_exists('am,pm', $constraints));
+        $this->assertTrue(array_key_exists_wrapper('am,pm', $constraints));
         $this->assertEquals('true', $this->element->dijitParams['constraints']['am,pm']);
     }
 
@@ -125,11 +125,11 @@ class Zend_Dojo_Form_Element_DateTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $this->assertFalse($this->element->getStrict());
         $constraints = $this->element->getConstraints();
-        $this->assertFalse(array_key_exists('strict', $constraints));
+        $this->assertFalse(array_key_exists_wrapper('strict', $constraints));
         $this->element->setStrict(true);
         $this->assertTrue($this->element->getStrict());
         $constraints = $this->element->getConstraints();
-        $this->assertTrue(array_key_exists('strict', $constraints));
+        $this->assertTrue(array_key_exists_wrapper('strict', $constraints));
         $this->assertEquals('true', $this->element->dijitParams['constraints']['strict']);
     }
 
@@ -137,7 +137,7 @@ class Zend_Dojo_Form_Element_DateTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNull($this->element->getLocale());
         $constraints = $this->element->getConstraints();
-        $this->assertFalse(array_key_exists('locale', $constraints));
+        $this->assertFalse(array_key_exists_wrapper('locale', $constraints));
         $this->element->setLocale('en-US');
         $this->assertEquals('en-US', $this->element->getLocale());
         $constraints = $this->element->getConstraints();
@@ -148,7 +148,7 @@ class Zend_Dojo_Form_Element_DateTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNull($this->element->getFormatLength());
         $constraints = $this->element->getConstraints();
-        $this->assertFalse(array_key_exists('formatLength', $constraints));
+        $this->assertFalse(array_key_exists_wrapper('formatLength', $constraints));
         $this->element->setFormatLength('long');
         $this->assertEquals('long', $this->element->getFormatLength());
         $constraints = $this->element->getConstraints();
@@ -167,7 +167,7 @@ class Zend_Dojo_Form_Element_DateTextBoxTest extends PHPUnit_Framework_TestCase
     {
         $this->assertNull($this->element->getSelector());
         $constraints = $this->element->getConstraints();
-        $this->assertFalse(array_key_exists('selector', $constraints));
+        $this->assertFalse(array_key_exists_wrapper('selector', $constraints));
         $this->element->setSelector('time');
         $this->assertEquals('time', $this->element->getSelector());
         $constraints = $this->element->getConstraints();

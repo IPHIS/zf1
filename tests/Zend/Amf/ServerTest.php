@@ -220,7 +220,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $responseBody = $response->getAmfBodies();
         // Now check if the return data was properly set.
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         $this->assertEquals("String: 12345", $responseBody[0]->getData(), var_export($responseBody, 1));
     }
 
@@ -238,7 +238,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $responseBody = $response->getAmfBodies();
         // Now check if the return data was properly set.
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         $this->assertEquals("bar: foo", $responseBody[0]->getData(), var_export($responseBody, 1));
     }
 
@@ -263,7 +263,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $responseBody = $response->getAmfBodies();
         // Now check if the return data was properly set.
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         $this->assertEquals("String: 12345", $responseBody[0]->getData(), var_export($responseBody, 1));
 
     }
@@ -288,7 +288,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $responseBody = $response->getAmfBodies();
         // Now check if the return data was properly set.
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         $this->assertEquals("bar: foo", $responseBody[0]->getData(), var_export($responseBody, 1));
     }
 
@@ -318,7 +318,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         // Now check if the return data was properly set.
         $acknowledgeMessage = $responseBody[0]->getData();
         // check that we have a message beening returned
@@ -353,7 +353,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         // Now check if the return data was properly set.
         $acknowledgeMessage = $responseBody[0]->getData();
         // check that we have a message beening returned
@@ -382,7 +382,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         // Now check if the return data was properly set.
         $acknowledgeMessage = $responseBody[0]->getData();
         // check that we have a message beening returned
@@ -408,7 +408,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
             if (!is_array($data)) {
                 continue;
             }
-            if (!array_key_exists('description', $data)) {
+            if (!array_key_exists_wrapper('description', $data)) {
                 continue;
             }
             if (strstr($data['description'], 'does not exist')) {
@@ -438,7 +438,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
 
         // Now check if the return data was properly set.
         $message = $responseBody[0]->getData();
@@ -847,7 +847,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         // Now check if the return data was properly set.
         $acknowledgeMessage = $responseBody[0]->getData();
         // check that we have a message beening returned
@@ -873,7 +873,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $responseBody = $response->getAmfBodies();
         // Now check if the return data was properly set.
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         $this->assertTrue($responseBody[0]->getData(), var_export($responseBody, 1));
     }
 
@@ -903,7 +903,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         // Now check if the return data was properly set.
         $acknowledgeMessage = $responseBody[0]->getData();
         // check that we have a message beening returned
@@ -930,7 +930,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $responseBody = $response->getAmfBodies();
         // Now check if the return data was properly set.
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         $this->assertEquals(4, count($responseBody[0]->getData()), var_export($responseBody, 1));
     }
 
@@ -959,7 +959,7 @@ class Zend_Amf_ServerTest extends PHPUnit_Framework_TestCase
         $response = $this->_server->getResponse();
         $responseBody = $response->getAmfBodies();
         $this->assertTrue(0 < count($responseBody), var_export($responseBody, 1));
-        $this->assertTrue(array_key_exists(0, $responseBody), var_export($responseBody, 1));
+        $this->assertTrue(array_key_exists_wrapper(0, $responseBody), var_export($responseBody, 1));
         // Now check if the return data was properly set.
         $acknowledgeMessage = $responseBody[0]->getData();
         // check that we have a message beening returned

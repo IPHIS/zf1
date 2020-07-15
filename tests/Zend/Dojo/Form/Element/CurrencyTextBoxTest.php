@@ -126,7 +126,7 @@ class Zend_Dojo_Form_Element_CurrencyTextBoxTest extends PHPUnit_Framework_TestC
     public function testFractionalAccessorsShouldProxyToConstraints()
     {
         $this->assertFalse($this->element->getFractional());
-        $this->assertFalse(array_key_exists('constraints', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('constraints', $this->element->dijitParams));
         $this->element->setFractional(true);
         $this->assertTrue($this->element->getFractional());
         $this->assertEquals('true', $this->element->dijitParams['constraints']['fractional']);

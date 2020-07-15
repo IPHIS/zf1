@@ -474,7 +474,7 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
         );
         $this->element->setAttribs($attribs);
 
-        $this->assertFalse(array_key_exists('helper', $this->element->getAttribs()));
+        $this->assertFalse(array_key_exists_wrapper('helper', $this->element->getAttribs()));
     }
 
     public function testPassingNullValuesToSetAttribsUnsetsAttribs()
@@ -1322,9 +1322,9 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
         $decorator = $this->element->getDecorator('description');
         $this->assertTrue($decorator instanceof Zend_Form_Decorator_Description);
         $options = $decorator->getOptions();
-        $this->assertTrue(array_key_exists('tag', $options));
+        $this->assertTrue(array_key_exists_wrapper('tag', $options));
         $this->assertEquals('p', $options['tag']);
-        $this->assertTrue(array_key_exists('class', $options));
+        $this->assertTrue(array_key_exists_wrapper('class', $options));
         $this->assertEquals('description', $options['class']);
     }
 
@@ -1471,12 +1471,12 @@ class Zend_Form_ElementTest extends PHPUnit_Framework_TestCase
             array(array('div2' => 'HtmlTag'), array('tag' => 'div')),
         ));
         $decorators = $this->element->getDecorators();
-        $this->assertTrue(array_key_exists('div', $decorators));
-        $this->assertTrue(array_key_exists('div2', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div2', $decorators));
         $this->element->removeDecorator('div');
         $decorators = $this->element->getDecorators();
-        $this->assertFalse(array_key_exists('div', $decorators));
-        $this->assertTrue(array_key_exists('div2', $decorators));
+        $this->assertFalse(array_key_exists_wrapper('div', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div2', $decorators));
     }
 
     public function testCanClearAllDecorators()

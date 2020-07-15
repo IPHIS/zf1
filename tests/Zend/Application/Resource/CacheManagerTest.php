@@ -266,7 +266,7 @@ class Zend_Application_Resource_CacheManagerTest extends PHPUnit_Framework_TestC
         $event = current($options['page']['frontend']['options']['logger'][0]->events);
 
         $this->assertTrue(is_array($event));
-        $this->assertTrue(array_key_exists('message', $event));
+        $this->assertTrue(array_key_exists_wrapper('message', $event));
         $this->assertContains('Zend_Cache_Backend_Static', $event['message']);
     }
 }

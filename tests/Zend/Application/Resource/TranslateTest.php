@@ -256,7 +256,7 @@ class Zend_Application_Resource_TranslateTest extends PHPUnit_Framework_TestCase
         $event = current($options['log'][0]->events);
 
         $this->assertTrue(is_array($event));
-        $this->assertTrue(array_key_exists('message', $event));
+        $this->assertTrue(array_key_exists_wrapper('message', $event));
         $this->assertEquals(
             "Untranslated message within 'en': untranslated",
             $event['message']

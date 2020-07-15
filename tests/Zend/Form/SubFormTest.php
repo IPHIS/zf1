@@ -61,10 +61,10 @@ class Zend_Form_SubFormTest extends PHPUnit_Framework_TestCase
     public function testSubFormUtilizesDefaultDecorators()
     {
         $decorators = $this->form->getDecorators();
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_FormElements', $decorators));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_HtmlTag', $decorators));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_Fieldset', $decorators));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_DtDdWrapper', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_FormElements', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_HtmlTag', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_Fieldset', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_DtDdWrapper', $decorators));
 
         $htmlTag = $decorators['Zend_Form_Decorator_HtmlTag'];
         $tag = $htmlTag->getOption('tag');

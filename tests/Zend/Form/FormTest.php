@@ -975,9 +975,9 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         ));
         $this->form->bar->setIgnore(true);
         $test = $this->form->getValues();
-        $this->assertFalse(array_key_exists('bar', $test));
-        $this->assertTrue(array_key_exists('foo', $test));
-        $this->assertTrue(array_key_exists('baz', $test));
+        $this->assertFalse(array_key_exists_wrapper('bar', $test));
+        $this->assertTrue(array_key_exists_wrapper('foo', $test));
+        $this->assertTrue(array_key_exists_wrapper('baz', $test));
     }
 
     public function testCanRetrieveSingleUnfilteredElementValue()
@@ -2556,7 +2556,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
 
         $this->testFullDataArrayUsedToValidateSubFormByDefault();
         $codes    = $this->form->getErrors();
-        $this->assertTrue(array_key_exists('sub', $codes));
+        $this->assertTrue(array_key_exists_wrapper('sub', $codes));
         $this->assertTrue(is_array($codes['sub']));
         $keys     = array('subfoo', 'subbar', 'subbaz');
         $this->assertEquals($keys, array_keys($codes['sub']));
@@ -2612,7 +2612,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($this->form->isValid($data));
 
         $codes    = $this->form->getMessages();
-        $this->assertTrue(array_key_exists('sub', $codes));
+        $this->assertTrue(array_key_exists_wrapper('sub', $codes));
         $this->assertTrue(is_array($codes['sub']));
         $keys     = array('subfoo', 'subbar', 'subbaz');
         $this->assertEquals($keys, array_keys($codes['sub']));
@@ -2679,14 +2679,14 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(isset($messages['bar']));
 
         foreach ($messages['foo'] as $key => $message) {
-            if (array_key_exists($key, $translations)) {
+            if (array_key_exists_wrapper($key, $translations)) {
                 $this->assertEquals($translations[$key], $message);
             } else {
                 $this->fail('Translation for ' . $key . ' does not exist?');
             }
         }
         foreach ($messages['bar'] as $key => $message) {
-            if (array_key_exists($key, $translations)) {
+            if (array_key_exists_wrapper($key, $translations)) {
                 $this->assertEquals($translations[$key], $message);
             } else {
                 $this->fail('Translation for ' . $key . ' does not exist?');
@@ -2732,7 +2732,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(isset($messages['bar']));
 
         foreach ($messages['foo'] as $key => $message) {
-            if (array_key_exists($key, $translations)) {
+            if (array_key_exists_wrapper($key, $translations)) {
                 $this->assertEquals($translations[$key], $message);
             } else {
                 $this->fail('Translation for ' . $key . ' does not exist?');
@@ -2777,7 +2777,7 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(isset($messages['bar']));
 
         foreach ($messages['foo'] as $key => $message) {
-            if (array_key_exists($key, $translations)) {
+            if (array_key_exists_wrapper($key, $translations)) {
                 $this->assertEquals($translations[$key], $message);
             } else {
                 $this->fail('Translation for ' . $key . ' does not exist?');
@@ -3057,12 +3057,12 @@ class Zend_Form_FormTest extends PHPUnit_Framework_TestCase
             array(array('fieldset' => 'HtmlTag'), array('tag' => 'fieldset')),
         ));
         $decorators = $this->form->getDecorators();
-        $this->assertTrue(array_key_exists('div', $decorators));
-        $this->assertTrue(array_key_exists('fieldset', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('fieldset', $decorators));
         $this->form->removeDecorator('div');
         $decorators = $this->form->getDecorators();
-        $this->assertFalse(array_key_exists('div', $decorators));
-        $this->assertTrue(array_key_exists('fieldset', $decorators));
+        $this->assertFalse(array_key_exists_wrapper('div', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('fieldset', $decorators));
     }
 
     public function testCanClearAllDecorators()

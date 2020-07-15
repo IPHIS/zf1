@@ -85,7 +85,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
         require_once dirname(__FILE__) . "/_files/MyBarcode1.php";
         $barcode = new Zend_Validate_Barcode('MyBarcode1');
         $this->assertFalse($barcode->isValid('0000000'));
-        $this->assertTrue(array_key_exists('barcodeFailed', $barcode->getMessages()));
+        $this->assertTrue(array_key_exists_wrapper('barcodeFailed', $barcode->getMessages()));
         $this->assertFalse($barcode->getAdapter()->checksum('0000000'));
     }
 
@@ -436,7 +436,7 @@ class Zend_Validate_BarcodeTest extends PHPUnit_Framework_TestCase
         $barcode = new Zend_Validate_Barcode('ean8');
         $this->assertFalse($barcode->isValid('123'));
         $message = $barcode->getMessages();
-        $this->assertTrue(array_key_exists('barcodeInvalidLength', $message));
+        $this->assertTrue(array_key_exists_wrapper('barcodeInvalidLength', $message));
         $this->assertContains("length of 7/8 characters", $message['barcodeInvalidLength']);
     }
 }

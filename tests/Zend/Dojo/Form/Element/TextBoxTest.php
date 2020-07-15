@@ -114,7 +114,7 @@ class Zend_Dojo_Form_Element_TextBoxTest extends PHPUnit_Framework_TestCase
     public function testLowercaseAccessorsShouldProxyToDijitParams()
     {
         $this->assertFalse($this->element->getLowercase());
-        $this->assertFalse(array_key_exists('lowercase', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('lowercase', $this->element->dijitParams));
         $this->element->setLowercase(true);
         $this->assertTrue($this->element->getLowercase());
         $this->assertTrue($this->element->dijitParams['lowercase']);
@@ -123,7 +123,7 @@ class Zend_Dojo_Form_Element_TextBoxTest extends PHPUnit_Framework_TestCase
     public function testPropercaseAccessorsShouldProxyToDijitParams()
     {
         $this->assertTrue($this->element->getPropercase());
-        $this->assertTrue(array_key_exists('propercase', $this->element->dijitParams));
+        $this->assertTrue(array_key_exists_wrapper('propercase', $this->element->dijitParams));
         $this->element->setPropercase(false);
         $this->assertFalse($this->element->getPropercase());
     }
@@ -131,7 +131,7 @@ class Zend_Dojo_Form_Element_TextBoxTest extends PHPUnit_Framework_TestCase
     public function testUppercaseAccessorsShouldProxyToDijitParams()
     {
         $this->assertFalse($this->element->getUppercase());
-        $this->assertFalse(array_key_exists('uppercase', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('uppercase', $this->element->dijitParams));
         $this->element->setUppercase(true);
         $this->assertTrue($this->element->getUppercase());
         $this->assertTrue($this->element->dijitParams['uppercase']);
@@ -140,7 +140,7 @@ class Zend_Dojo_Form_Element_TextBoxTest extends PHPUnit_Framework_TestCase
     public function testTrimAccessorsShouldProxyToDijitParams()
     {
         $this->assertTrue($this->element->getTrim());
-        $this->assertTrue(array_key_exists('trim', $this->element->dijitParams));
+        $this->assertTrue(array_key_exists_wrapper('trim', $this->element->dijitParams));
         $this->element->setTrim(false);
         $this->assertFalse($this->element->getTrim());
     }
@@ -148,7 +148,7 @@ class Zend_Dojo_Form_Element_TextBoxTest extends PHPUnit_Framework_TestCase
     public function testMaxLengthAccessorsShouldProxyToDijitParams()
     {
         $this->assertNull($this->element->getMaxLength());
-        $this->assertFalse(array_key_exists('maxLength', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('maxLength', $this->element->dijitParams));
         $this->element->setMaxLength(20);
         $this->assertEquals(20, $this->element->getMaxLength());
         $this->assertEquals(20, $this->element->dijitParams['maxLength']);

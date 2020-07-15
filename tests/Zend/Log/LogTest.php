@@ -211,7 +211,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($mock->events));
         $event = array_shift($mock->events);
 
-        $this->assertTrue(array_key_exists($field, $event));
+        $this->assertTrue(array_key_exists_wrapper($field, $event));
         $this->assertEquals($value, $event[$field]);
     }
 
@@ -449,7 +449,7 @@ class Zend_Log_LogTest extends PHPUnit_Framework_TestCase
         }
         $this->assertEquals(0, $mock->events[0]['priority']);
         $this->assertEquals('EMERG', $mock->events[0]['priorityName']);
-        $this->assertFalse(array_key_exists(1, $mock->events));
+        $this->assertFalse(array_key_exists_wrapper(1, $mock->events));
     }
 
     /**

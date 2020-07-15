@@ -143,7 +143,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
             $this->assertEquals(1, count($paths));
 
             $prefix = 'Zend_View_' . ucfirst($pathType) . '_';
-            $this->assertTrue(array_key_exists($prefix, $paths));
+            $this->assertTrue(array_key_exists_wrapper($prefix, $paths));
 
             if ($testReadability) {
                 $path = current($paths[$prefix]);
@@ -197,7 +197,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
             case 'helper':
             case 'filter':
             default:
-                $this->assertTrue(array_key_exists($prefix, $actualPaths));
+                $this->assertTrue(array_key_exists_wrapper($prefix, $actualPaths));
                 $this->assertSame($expectedPaths, $actualPaths[$prefix], 'Actual: ' . var_export($actualPaths, 1) . "\nExpected: " . var_export($expectedPaths, 1));
         }
     }
@@ -564,13 +564,13 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         $status = $view->addHelperPath(dirname(__FILE__) . '/View/_stubs/HelperDir1/', 'My_View_Helper');
         $this->assertSame($view, $status);
         $helperPaths = $view->getHelperPaths();
-        $this->assertTrue(array_key_exists('My_View_Helper_', $helperPaths));
+        $this->assertTrue(array_key_exists_wrapper('My_View_Helper_', $helperPaths));
         $path = $this->_filterPath(current($helperPaths['My_View_Helper_']));
         $this->assertEquals($this->_filterPath(dirname(__FILE__) . '/View/_stubs/HelperDir1/'), $path);
 
         $view->setHelperPath(dirname(__FILE__) . '/View/_stubs/HelperDir2/', 'Other_View_Helper');
         $helperPaths = $view->getHelperPaths();
-        $this->assertTrue(array_key_exists('Other_View_Helper_', $helperPaths));
+        $this->assertTrue(array_key_exists_wrapper('Other_View_Helper_', $helperPaths));
         $path = $this->_filterPath(current($helperPaths['Other_View_Helper_']));
         $this->assertEquals($this->_filterPath(dirname(__FILE__) . '/View/_stubs/HelperDir2/'), $path);
     }
@@ -581,7 +581,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         $status = $view->addHelperPath('Zend/View/_stubs/HelperDir1/', 'My_View_Helper');
         $this->assertSame($view, $status);
         $helperPaths = $view->getHelperPaths();
-        $this->assertTrue(array_key_exists('My_View_Helper_', $helperPaths));
+        $this->assertTrue(array_key_exists_wrapper('My_View_Helper_', $helperPaths));
         $this->assertContains($this->_filterPath('Zend/View/_stubs/HelperDir1/'), $this->_filterPath(current($helperPaths['My_View_Helper_'])));
     }
 
@@ -591,12 +591,12 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
         $status = $view->addFilterPath(dirname(__FILE__) . '/View/_stubs/HelperDir1/', 'My_View_Filter');
         $this->assertSame($view, $status);
         $filterPaths = $view->getFilterPaths();
-        $this->assertTrue(array_key_exists('My_View_Filter_', $filterPaths));
+        $this->assertTrue(array_key_exists_wrapper('My_View_Filter_', $filterPaths));
         $this->assertEquals($this->_filterPath(dirname(__FILE__) . '/View/_stubs/HelperDir1/'), $this->_filterPath(current($filterPaths['My_View_Filter_'])));
 
         $view->setFilterPath(dirname(__FILE__) . '/View/_stubs/HelperDir2/', 'Other_View_Filter');
         $filterPaths = $view->getFilterPaths();
-        $this->assertTrue(array_key_exists('Other_View_Filter_', $filterPaths));
+        $this->assertTrue(array_key_exists_wrapper('Other_View_Filter_', $filterPaths));
         $this->assertEquals($this->_filterPath(dirname(__FILE__) . '/View/_stubs/HelperDir2/'), $this->_filterPath(current($filterPaths['Other_View_Filter_'])));
     }
 
@@ -1068,7 +1068,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
             ),
         ));
         $paths = $view->getHelperPaths();
-        $this->assertTrue(array_key_exists('My_View_', $paths), var_export($paths, 1));
+        $this->assertTrue(array_key_exists_wrapper('My_View_', $paths), var_export($paths, 1));
     }
 
     /**
@@ -1082,7 +1082,7 @@ class Zend_ViewTest extends PHPUnit_Framework_TestCase
             ),
         ));
         $paths = $view->getFilterPaths();
-        $this->assertTrue(array_key_exists('My_View_', $paths), var_export($paths, 1));
+        $this->assertTrue(array_key_exists_wrapper('My_View_', $paths), var_export($paths, 1));
     }
 
     /**

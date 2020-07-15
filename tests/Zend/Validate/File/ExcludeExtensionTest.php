@@ -80,7 +80,7 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
 
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo'));
-        $this->assertTrue(array_key_exists('fileExcludeExtensionNotFound', $validator->getMessages()));
+        $this->assertTrue(array_key_exists_wrapper('fileExcludeExtensionNotFound', $validator->getMessages()));
 
         $files = array(
             'name'     => 'test1',
@@ -91,7 +91,7 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
         );
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/nofile.mo', $files));
-        $this->assertTrue(array_key_exists('fileExcludeExtensionNotFound', $validator->getMessages()));
+        $this->assertTrue(array_key_exists_wrapper('fileExcludeExtensionNotFound', $validator->getMessages()));
 
         $files = array(
             'name'     => 'testsize.mo',
@@ -102,7 +102,7 @@ class Zend_Validate_File_ExcludeExtensionTest extends PHPUnit_Framework_TestCase
         );
         $validator = new Zend_Validate_File_ExcludeExtension('mo');
         $this->assertEquals(false, $validator->isValid(dirname(__FILE__) . '/_files/testsize.mo', $files));
-        $this->assertTrue(array_key_exists('fileExcludeExtensionFalse', $validator->getMessages()));
+        $this->assertTrue(array_key_exists_wrapper('fileExcludeExtensionFalse', $validator->getMessages()));
 
         $files = array(
             'name'     => 'testsize.mo',

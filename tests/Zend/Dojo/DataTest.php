@@ -195,10 +195,10 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->dojoData->addItem($item, 'foo');
         $this->assertEquals(1, count($this->dojoData));
         $stored = $this->dojoData->getItem('foo');
-        $this->assertTrue(array_key_exists('id', $stored));
+        $this->assertTrue(array_key_exists_wrapper('id', $stored));
         $this->assertEquals('foo', $stored['id']);
         foreach ($item as $key => $value) {
-            $this->assertTrue(array_key_exists($key, $stored));
+            $this->assertTrue(array_key_exists_wrapper($key, $stored));
             $this->assertEquals($value, $stored[$key]);
         }
     }
@@ -365,7 +365,7 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->testAddItemsShouldAcceptTraversableObject();
         $array = $this->dojoData->toArray();
         $this->assertTrue(is_array($array));
-        $this->assertTrue(array_key_exists('identifier', $array));
+        $this->assertTrue(array_key_exists_wrapper('identifier', $array));
         $this->assertEquals($this->dojoData->getIdentifier(), $array['identifier']);
         $this->assertEquals(array_values($this->dojoData->getItems()), $array['items']);
     }
@@ -376,7 +376,7 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->dojoData->setLabel('title');
         $array = $this->dojoData->toArray();
         $this->assertTrue(is_array($array));
-        $this->assertTrue(array_key_exists('label', $array));
+        $this->assertTrue(array_key_exists_wrapper('label', $array));
         $this->assertEquals($this->dojoData->getLabel(), $array['label']);
     }
 
@@ -498,8 +498,8 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->dojoData->clearMetadata('numRows');
         $metadata = $this->dojoData->getMetadata();
         $this->assertEquals(1, count($metadata));
-        $this->assertFalse(array_key_exists('numRows', $metadata));
-        $this->assertTrue(array_key_exists('sort', $metadata));
+        $this->assertFalse(array_key_exists_wrapper('numRows', $metadata));
+        $this->assertTrue(array_key_exists_wrapper('sort', $metadata));
     }
 
     /**
@@ -521,8 +521,8 @@ class Zend_Dojo_DataTest extends PHPUnit_Framework_TestCase
         $this->testDataContainerShouldAcceptAdditionalMetadataEnMasse();
         $this->dojoData->setIdentifier('id');
         $array = $this->dojoData->toArray();
-        $this->assertTrue(array_key_exists('numRows', $array));
-        $this->assertTrue(array_key_exists('sort', $array));
+        $this->assertTrue(array_key_exists_wrapper('numRows', $array));
+        $this->assertTrue(array_key_exists_wrapper('sort', $array));
     }
 }
 

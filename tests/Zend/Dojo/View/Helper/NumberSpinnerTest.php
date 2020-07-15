@@ -144,9 +144,9 @@ class Zend_Dojo_View_Helper_NumberSpinnerTest extends PHPUnit_Framework_TestCase
         }
         $constraints = Zend_Json::decode($constraints);
         $this->assertTrue(is_array($constraints), var_export($m[1], 1));
-        $this->assertTrue(array_key_exists('min', $constraints));
-        $this->assertTrue(array_key_exists('max', $constraints));
-        $this->assertTrue(array_key_exists('places', $constraints));
+        $this->assertTrue(array_key_exists_wrapper('min', $constraints));
+        $this->assertTrue(array_key_exists_wrapper('max', $constraints));
+        $this->assertTrue(array_key_exists_wrapper('places', $constraints));
     }
 
     public function testInvalidConstraintsShouldBeStrippedPriorToRendering()

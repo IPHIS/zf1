@@ -166,9 +166,9 @@ class Zend_Json_Server_ErrorTest extends PHPUnit_Framework_TestCase
     public function validateArray($error)
     {
         $this->assertTrue(is_array($error));
-        $this->assertTrue(array_key_exists('code', $error));
-        $this->assertTrue(array_key_exists('message', $error));
-        $this->assertTrue(array_key_exists('data', $error));
+        $this->assertTrue(array_key_exists_wrapper('code', $error));
+        $this->assertTrue(array_key_exists_wrapper('message', $error));
+        $this->assertTrue(array_key_exists_wrapper('data', $error));
 
         $this->assertTrue(is_int($error['code']));
         $this->assertTrue(is_string($error['message']));

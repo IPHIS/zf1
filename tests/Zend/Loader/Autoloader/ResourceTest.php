@@ -169,7 +169,7 @@ class Zend_Loader_Autoloader_ResourceTest extends PHPUnit_Framework_TestCase
     {
         $this->loader->addResourceType('models', 'models', 'Model');
         $resources = $this->loader->getResourceTypes();
-        $this->assertTrue(array_key_exists('models', $resources));
+        $this->assertTrue(array_key_exists_wrapper('models', $resources));
         $this->assertEquals($this->loader->getNamespace() . '_Model', $resources['models']['namespace']);
         $this->assertContains('/models', $resources['models']['path']);
     }

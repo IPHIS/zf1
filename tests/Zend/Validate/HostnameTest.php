@@ -296,7 +296,7 @@ class Zend_Validate_HostnameTest extends PHPUnit_Framework_TestCase
         $messages = $this->_validator->getMessages();
         $found = false;
         foreach ($messages as $code => $message) {
-            if (array_key_exists($code, $translations)) {
+            if (array_key_exists_wrapper($code, $translations)) {
                 $found = true;
                 break;
             }

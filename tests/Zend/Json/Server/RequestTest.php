@@ -92,7 +92,7 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
         $this->request->addParam('bar', 'foo');
         $params = $this->request->getParams();
         $this->assertEquals(1, count($params));
-        $this->assertTrue(array_key_exists('foo', $params));
+        $this->assertTrue(array_key_exists_wrapper('foo', $params));
         $this->assertEquals('bar', $params['foo']);
     }
 
@@ -142,8 +142,8 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
         $this->request->addParams($params);
         $test = $this->request->getParams();
         $this->assertEquals(array_values($params), array_values($test));
-        $this->assertTrue(array_key_exists('foo', $test));
-        $this->assertTrue(array_key_exists('baz', $test));
+        $this->assertTrue(array_key_exists_wrapper('foo', $test));
+        $this->assertTrue(array_key_exists_wrapper('baz', $test));
         $this->assertTrue(in_array('baz', $test));
     }
 
@@ -281,9 +281,9 @@ class Zend_Json_Server_RequestTest extends PHPUnit_Framework_TestCase
         $test = Zend_Json::decode($json);
         $this->assertTrue(is_array($test), var_export($json, 1));
 
-        $this->assertTrue(array_key_exists('id', $test));
-        $this->assertTrue(array_key_exists('method', $test));
-        $this->assertTrue(array_key_exists('params', $test));
+        $this->assertTrue(array_key_exists_wrapper('id', $test));
+        $this->assertTrue(array_key_exists_wrapper('method', $test));
+        $this->assertTrue(array_key_exists_wrapper('params', $test));
 
         $this->assertTrue(is_string($test['id']));
         $this->assertTrue(is_string($test['method']));

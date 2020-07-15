@@ -608,7 +608,7 @@ class Zend_Controller_Dispatcher_StandardTest extends PHPUnit_Framework_TestCase
         $this->_dispatcher->removeControllerDirectory('foo');
         $test = $this->_dispatcher->getControllerDirectory();
         $this->assertNotEquals($dirs, $test);
-        $this->assertFalse(array_key_exists('foo', $test));
+        $this->assertFalse(array_key_exists_wrapper('foo', $test));
     }
 
     /**

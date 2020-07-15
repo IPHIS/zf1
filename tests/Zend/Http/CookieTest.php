@@ -299,7 +299,7 @@ class Zend_Http_CookieTest extends PHPUnit_Framework_TestCase
             $this->fail("Failed creating a cookie object from '$cStr'");
         }
 
-        if (array_key_exists('expires', $cInfo)) {
+        if (array_key_exists_wrapper('expires', $cInfo)) {
             $this->assertEquals(($cInfo['expires'] === null), $cookie->isSessionCookie());
         }
     }

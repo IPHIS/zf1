@@ -260,13 +260,13 @@ class Zend_Json_ServerTest extends PHPUnit_Framework_TestCase
         $services = $smd->getServices();
         $this->assertTrue(is_array($services));
         $this->assertTrue(0 < count($services));
-        $this->assertTrue(array_key_exists('strtolower', $services));
+        $this->assertTrue(array_key_exists_wrapper('strtolower', $services));
         $methods = get_class_methods('Zend_Json_Server');
         foreach ($methods as $method) {
             if ('_' == $method[0]) {
                 continue;
             }
-            $this->assertTrue(array_key_exists($method, $services));
+            $this->assertTrue(array_key_exists_wrapper($method, $services));
         }
     }
 
@@ -435,8 +435,8 @@ class Zend_Json_ServerTest extends PHPUnit_Framework_TestCase
 
         $decoded = Zend_Json::decode($buffer);
         $this->assertTrue(is_array($decoded));
-        $this->assertTrue(array_key_exists('result', $decoded));
-        $this->assertTrue(array_key_exists('id', $decoded));
+        $this->assertTrue(array_key_exists_wrapper('result', $decoded));
+        $this->assertTrue(array_key_exists_wrapper('id', $decoded));
 
         $response = $this->server->getResponse();
         $this->assertEquals($response->getResult(), $decoded['result']);

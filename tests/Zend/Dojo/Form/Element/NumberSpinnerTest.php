@@ -112,7 +112,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testDefaultTimeoutAccessorsShouldProxyToDijitParams()
     {
         $this->assertNull($this->element->getDefaultTimeout());
-        $this->assertFalse(array_key_exists('defaultTimeout', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('defaultTimeout', $this->element->dijitParams));
         $this->element->setDefaultTimeout(20);
         $this->assertEquals(20, $this->element->getDefaultTimeout());
         $this->assertEquals(20, $this->element->dijitParams['defaultTimeout']);
@@ -121,7 +121,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testTimeoutChangeRateAccessorsShouldProxyToDijitParams()
     {
         $this->assertNull($this->element->getTimeoutChangeRate());
-        $this->assertFalse(array_key_exists('timeoutChangeRate', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('timeoutChangeRate', $this->element->dijitParams));
         $this->element->setTimeoutChangeRate(20);
         $this->assertEquals(20, $this->element->getTimeoutChangeRate());
         $this->assertEquals(20, $this->element->dijitParams['timeoutChangeRate']);
@@ -130,7 +130,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testLargeDeltaAccessorsShouldProxyToDijitParams()
     {
         $this->assertNull($this->element->getLargeDelta());
-        $this->assertFalse(array_key_exists('largeDelta', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('largeDelta', $this->element->dijitParams));
         $this->element->setLargeDelta(20);
         $this->assertEquals(20, $this->element->getLargeDelta());
         $this->assertEquals(20, $this->element->dijitParams['largeDelta']);
@@ -139,7 +139,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testSmallDeltaAccessorsShouldProxyToDijitParams()
     {
         $this->assertNull($this->element->getSmallDelta());
-        $this->assertFalse(array_key_exists('smallDelta', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('smallDelta', $this->element->dijitParams));
         $this->element->setSmallDelta(20);
         $this->assertEquals(20, $this->element->getSmallDelta());
         $this->assertEquals(20, $this->element->dijitParams['smallDelta']);
@@ -148,7 +148,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testIntermediateChangesAccessorsShouldProxyToDijitParams()
     {
         $this->assertFalse($this->element->getIntermediateChanges());
-        $this->assertFalse(array_key_exists('intermediateChanges', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('intermediateChanges', $this->element->dijitParams));
         $this->element->setIntermediateChanges(true);
         $this->assertTrue($this->element->getIntermediateChanges());
         $this->assertTrue($this->element->dijitParams['intermediateChanges']);
@@ -157,7 +157,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testRangeMessageAccessorsShouldProxyToDijitParams()
     {
         $this->assertNull($this->element->getRangeMessage());
-        $this->assertFalse(array_key_exists('rangeMessage', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('rangeMessage', $this->element->dijitParams));
         $this->element->setRangeMessage('foo');
         $this->assertEquals('foo', $this->element->getRangeMessage());
         $this->assertEquals('foo', $this->element->dijitParams['rangeMessage']);
@@ -166,7 +166,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testMinAccessorsShouldProxyToConstraintsDijitParam()
     {
         $this->assertNull($this->element->getMin());
-        $this->assertFalse(array_key_exists('constraints', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('constraints', $this->element->dijitParams));
         $this->element->setMin(5);
         $this->assertEquals(5, $this->element->getMin());
         $this->assertEquals(5, $this->element->dijitParams['constraints']['min']);
@@ -175,7 +175,7 @@ class Zend_Dojo_Form_Element_NumberSpinnerTest extends PHPUnit_Framework_TestCas
     public function testMaxAccessorsShouldProxyToConstraintsDijitParam()
     {
         $this->assertNull($this->element->getMax());
-        $this->assertFalse(array_key_exists('constraints', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('constraints', $this->element->dijitParams));
         $this->element->setMax(5);
         $this->assertEquals(5, $this->element->getMax());
         $this->assertEquals(5, $this->element->dijitParams['constraints']['max']);

@@ -323,12 +323,12 @@ class Zend_Form_DisplayGroupTest extends PHPUnit_Framework_TestCase
             array(array('div2' => 'HtmlTag'), array('tag' => 'div')),
         ));
         $decorators = $this->group->getDecorators();
-        $this->assertTrue(array_key_exists('div', $decorators));
-        $this->assertTrue(array_key_exists('div2', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div2', $decorators));
         $this->group->removeDecorator('div');
         $decorators = $this->group->getDecorators();
-        $this->assertFalse(array_key_exists('div', $decorators));
-        $this->assertTrue(array_key_exists('div2', $decorators));
+        $this->assertFalse(array_key_exists_wrapper('div', $decorators));
+        $this->assertTrue(array_key_exists_wrapper('div2', $decorators));
     }
 
 

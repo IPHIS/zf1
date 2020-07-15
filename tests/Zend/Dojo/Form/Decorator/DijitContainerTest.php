@@ -135,15 +135,15 @@ class Zend_Dojo_Form_Decorator_DijitContainerTest extends PHPUnit_Framework_Test
     {
         $attribs = $this->decorator->getAttribs();
         $this->assertTrue(is_array($attribs));
-        $this->assertFalse(array_key_exists('dijitParams', $attribs));
+        $this->assertFalse(array_key_exists_wrapper('dijitParams', $attribs));
     }
 
     public function testRetrievingDijitParamsShouldOmitNormalAttributes()
     {
         $params = $this->decorator->getDijitParams();
         $this->assertTrue(is_array($params));
-        $this->assertFalse(array_key_exists('class', $params));
-        $this->assertFalse(array_key_exists('style', $params));
+        $this->assertFalse(array_key_exists_wrapper('class', $params));
+        $this->assertFalse(array_key_exists_wrapper('style', $params));
     }
 
     public function testLegendShouldBeUsedAsTitleByDefault()

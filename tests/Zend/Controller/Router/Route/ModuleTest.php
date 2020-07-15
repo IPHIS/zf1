@@ -130,7 +130,7 @@ class Zend_Controller_Router_Route_ModuleTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('act', $values['action']);
         $this->assertTrue(isset($values['var']));
         $this->assertEquals('val', $values['var']);
-        $this->assertTrue(array_key_exists('foo', $values), var_export($values, 1));
+        $this->assertTrue(array_key_exists_wrapper('foo', $values), var_export($values, 1));
         $this->assertTrue(empty($values['foo']));
     }
 
@@ -162,7 +162,7 @@ class Zend_Controller_Router_Route_ModuleTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('act', $values['action']);
         $this->assertTrue(isset($values['var']));
         $this->assertEquals('val', $values['var']);
-        $this->assertTrue(array_key_exists('foo', $values), var_export($values, 1));
+        $this->assertTrue(array_key_exists_wrapper('foo', $values), var_export($values, 1));
         $this->assertTrue(empty($values['foo']));
     }
 

@@ -96,7 +96,7 @@ class Zend_AllTests_StreamWrapper_PhpInput
     {
         self::$_arguments[__FUNCTION__] = func_get_args();
 
-        if (array_key_exists(__FUNCTION__, self::$_returnValues)) {
+        if (array_key_exists_wrapper(__FUNCTION__, self::$_returnValues)) {
             return self::$_returnValues[__FUNCTION__];
         }
 
@@ -107,7 +107,7 @@ class Zend_AllTests_StreamWrapper_PhpInput
     {
         self::$_arguments[__FUNCTION__] = func_get_args();
 
-        if (array_key_exists(__FUNCTION__, self::$_returnValues)) {
+        if (array_key_exists_wrapper(__FUNCTION__, self::$_returnValues)) {
             return self::$_returnValues[__FUNCTION__];
         }
 
@@ -118,7 +118,7 @@ class Zend_AllTests_StreamWrapper_PhpInput
     {
         self::$_arguments[__FUNCTION__] = func_get_args();
 
-        if (array_key_exists(__FUNCTION__, self::$_returnValues)) {
+        if (array_key_exists_wrapper(__FUNCTION__, self::$_returnValues)) {
             return self::$_returnValues[__FUNCTION__];
         }
 
@@ -138,7 +138,7 @@ class Zend_AllTests_StreamWrapper_PhpInput
     {
         self::$_arguments[__FUNCTION__] = func_get_args();
 
-        if (array_key_exists(__FUNCTION__, self::$_returnValues)) {
+        if (array_key_exists_wrapper(__FUNCTION__, self::$_returnValues)) {
             return self::$_returnValues[__FUNCTION__];
         }
 

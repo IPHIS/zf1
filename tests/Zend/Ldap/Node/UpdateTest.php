@@ -60,12 +60,12 @@ class Zend_Ldap_Node_UpdateTest extends Zend_Ldap_OnlineTestCase
         $adAttributes = array('distinguishedname', 'instancetype', 'name', 'objectcategory',
             'objectguid', 'usnchanged', 'usncreated', 'whenchanged', 'whencreated');
         foreach ($adAttributes as $attr) {
-            if (array_key_exists($attr, $entry)) {
+            if (array_key_exists_wrapper($attr, $entry)) {
                 unset($entry[$attr]);
             }
         }
 
-        if (array_key_exists('objectclass', $entry) && count($entry['objectclass']) > 0) {
+        if (array_key_exists_wrapper('objectclass', $entry) && count($entry['objectclass']) > 0) {
             if ($entry['objectclass'][0] !== 'top') {
                 $entry['objectclass']=array_merge(array('top'), $entry['objectclass']);
             }

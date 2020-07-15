@@ -290,7 +290,7 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
     {
         $build = new Zend_Dojo_BuildLayer(array('layerName' => 'foo.main'));
         $prefixes = $build->getProfilePrefixes();
-        $this->assertTrue(array_key_exists('foo', $prefixes), var_export($prefixes, 1));
+        $this->assertTrue(array_key_exists_wrapper('foo', $prefixes), var_export($prefixes, 1));
         $this->assertEquals(array('foo', '../foo'), $prefixes['foo']);
     }
 
@@ -301,9 +301,9 @@ class Zend_Dojo_BuildLayerTest extends PHPUnit_Framework_TestCase
         $build = new Zend_Dojo_BuildLayer(array('view' => $this->view));
 
         $prefixes = $build->getProfilePrefixes();
-        $this->assertTrue(array_key_exists('dijit', $prefixes), var_export($prefixes, 1));
+        $this->assertTrue(array_key_exists_wrapper('dijit', $prefixes), var_export($prefixes, 1));
         $this->assertEquals(array('dijit', '../dijit'), $prefixes['dijit']);
-        $this->assertTrue(array_key_exists('dojox', $prefixes), var_export($prefixes, 1));
+        $this->assertTrue(array_key_exists_wrapper('dojox', $prefixes), var_export($prefixes, 1));
         $this->assertEquals(array('dojox', '../dojox'), $prefixes['dojox']);
     }
 

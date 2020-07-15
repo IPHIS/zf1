@@ -567,7 +567,7 @@ class Zend_Validate_NotEmptyTest extends PHPUnit_Framework_TestCase
 
         $this->assertFalse($valid->isValid(''));
         $messages = $valid->getMessages();
-        $this->assertTrue(array_key_exists('isEmpty', $messages));
+        $this->assertTrue(array_key_exists_wrapper('isEmpty', $messages));
         $this->assertContains("can't be empty", $messages['isEmpty']);
     }
 

@@ -310,7 +310,7 @@ class Zend_Controller_Router_RouteTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('c', $values['controller']);
         $this->assertEquals('a', $values['action']);
         $this->assertEquals('next', $values['next']);
-        $this->assertTrue(array_key_exists('2000', $values));
+        $this->assertTrue(array_key_exists_wrapper('2000', $values));
     }
 
     public function testRootRoute()

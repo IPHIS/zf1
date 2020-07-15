@@ -98,7 +98,7 @@ abstract class Zend_Db_Table_Select_TestCommon extends Zend_Db_Select_TestCommon
      */
     protected function _getSelectTable($table)
     {
-        if (!array_key_exists($table, $this->_table)) {
+        if (!array_key_exists_wrapper($table, $this->_table)) {
             throw new Zend_Exception('Non-existent table name');
         }
 

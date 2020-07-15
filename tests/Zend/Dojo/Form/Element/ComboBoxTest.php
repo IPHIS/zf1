@@ -111,7 +111,7 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
         $this->element->setStoreId('someStore');
         $this->assertTrue($this->element->hasDijitParam('store'));
         $store = $this->element->getDijitParam('store');
-        $this->assertTrue(array_key_exists('store', $store));
+        $this->assertTrue(array_key_exists_wrapper('store', $store));
         $this->assertEquals('someStore', $store['store']);
         $this->assertEquals($this->element->getStoreId(), $store['store']);
     }
@@ -121,7 +121,7 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
         $this->element->setStoreType('dojo.data.ItemFileReadStore');
         $this->assertTrue($this->element->hasDijitParam('store'));
         $store = $this->element->getDijitParam('store');
-        $this->assertTrue(array_key_exists('type', $store));
+        $this->assertTrue(array_key_exists_wrapper('type', $store));
         $this->assertEquals('dojo.data.ItemFileReadStore', $store['type']);
         $this->assertEquals($this->element->getStoreType(), $store['type']);
     }
@@ -131,7 +131,7 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
         $this->element->setStoreParams(array('url' => '/js/foo.json'));
         $this->assertTrue($this->element->hasDijitParam('store'));
         $store = $this->element->getDijitParam('store');
-        $this->assertTrue(array_key_exists('params', $store));
+        $this->assertTrue(array_key_exists_wrapper('params', $store));
         $this->assertEquals(array('url' => '/js/foo.json'), $store['params']);
         $this->assertEquals($this->element->getStoreParams(), $store['params']);
     }
@@ -139,10 +139,10 @@ class Zend_Dojo_Form_Element_ComboBoxTest extends PHPUnit_Framework_TestCase
     public function testAutocompleteAccessorsShouldProxyToDijitParams()
     {
         $this->assertFalse($this->element->getAutocomplete());
-        $this->assertFalse(array_key_exists('autocomplete', $this->element->dijitParams));
+        $this->assertFalse(array_key_exists_wrapper('autocomplete', $this->element->dijitParams));
         $this->element->setAutocomplete(true);
         $this->assertTrue($this->element->getAutocomplete());
-        $this->assertTrue(array_key_exists('autocomplete', $this->element->dijitParams));
+        $this->assertTrue(array_key_exists_wrapper('autocomplete', $this->element->dijitParams));
     }
 
     /**#@+

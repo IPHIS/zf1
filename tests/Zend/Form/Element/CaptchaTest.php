@@ -171,10 +171,10 @@ class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
     {
         $decorators = $this->element->getDecorators();
         $this->assertTrue(is_array($decorators));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_Errors', $decorators), 'Missing Errors decorator' . var_export(array_keys($decorators), 1));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_Description', $decorators), 'Missing Description decorator' . var_export(array_keys($decorators), 1));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_HtmlTag', $decorators), 'Missing HtmlTag decorator' . var_export(array_keys($decorators), 1));
-        $this->assertTrue(array_key_exists('Zend_Form_Decorator_Label', $decorators), 'Missing Label decorator' . var_export(array_keys($decorators), 1));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_Errors', $decorators), 'Missing Errors decorator' . var_export(array_keys($decorators), 1));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_Description', $decorators), 'Missing Description decorator' . var_export(array_keys($decorators), 1));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_HtmlTag', $decorators), 'Missing HtmlTag decorator' . var_export(array_keys($decorators), 1));
+        $this->assertTrue(array_key_exists_wrapper('Zend_Form_Decorator_Label', $decorators), 'Missing Label decorator' . var_export(array_keys($decorators), 1));
     }
 
     /**
@@ -183,7 +183,7 @@ class Zend_Form_Element_CaptchaTest extends PHPUnit_Framework_TestCase
     public function testHelperDoesNotShowUpInAttribs()
     {
         require_once 'Zend/View.php';
-        $this->assertFalse(array_key_exists('helper', $this->element->getAttribs()));
+        $this->assertFalse(array_key_exists_wrapper('helper', $this->element->getAttribs()));
     }
 
     /**

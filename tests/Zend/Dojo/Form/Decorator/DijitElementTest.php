@@ -133,19 +133,19 @@ class Zend_Dojo_Form_Decorator_DijitElementTest extends PHPUnit_Framework_TestCa
     {
         $attribs = $this->decorator->getElementAttribs();
         $this->assertTrue(is_array($attribs));
-        $this->assertFalse(array_key_exists('dijitParams', $attribs));
-        $this->assertFalse(array_key_exists('propercase', $attribs));
-        $this->assertFalse(array_key_exists('trim', $attribs));
+        $this->assertFalse(array_key_exists_wrapper('dijitParams', $attribs));
+        $this->assertFalse(array_key_exists_wrapper('propercase', $attribs));
+        $this->assertFalse(array_key_exists_wrapper('trim', $attribs));
     }
 
     public function testRetrievingDijitParamsShouldOmitNormalAttributes()
     {
         $params = $this->decorator->getDijitParams();
         $this->assertTrue(is_array($params));
-        $this->assertFalse(array_key_exists('class', $params));
-        $this->assertFalse(array_key_exists('style', $params));
-        $this->assertFalse(array_key_exists('value', $params));
-        $this->assertFalse(array_key_exists('label', $params));
+        $this->assertFalse(array_key_exists_wrapper('class', $params));
+        $this->assertFalse(array_key_exists_wrapper('style', $params));
+        $this->assertFalse(array_key_exists_wrapper('value', $params));
+        $this->assertFalse(array_key_exists_wrapper('label', $params));
     }
 
     public function testRenderingShouldEnableDojo()
