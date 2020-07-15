@@ -665,10 +665,12 @@ class Zend_Db_Select
     public function getPart($part)
     {
         $part = strtolower($part);
+/*
         if (!array_key_exists_wrapper($part, $this->_parts)) {
             require_once 'Zend/Db/Select/Exception.php';
             throw new Zend_Db_Select_Exception("Invalid Select part '$part'");
         }
+*/
         return $this->_parts[$part];
     }
 
