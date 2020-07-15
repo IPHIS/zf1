@@ -57,11 +57,11 @@ class Zend_Filter_StringToLower implements Zend_Filter_Interface
             $options = $temp;
         }
 
-        if (!array_key_exists('encoding', $options) && function_exists('mb_internal_encoding')) {
+        if (!array_key_exists_wrapper('encoding', $options) && function_exists('mb_internal_encoding')) {
             $options['encoding'] = mb_internal_encoding();
         }
 
-        if (array_key_exists('encoding', $options)) {
+        if (array_key_exists_wrapper('encoding', $options)) {
             $this->setEncoding($options['encoding']);
         }
     }

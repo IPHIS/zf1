@@ -276,7 +276,7 @@ class Zend_Db_Adapter_Pdo_Mssql extends Zend_Db_Adapter_Pdo_Abstract
                 }
             }
 
-            $isPrimary = array_key_exists($row[$column_name], $primaryKeyColumn);
+            $isPrimary = array_key_exists_wrapper($row[$column_name], $primaryKeyColumn);
             if ($isPrimary) {
                 $primaryPosition = $primaryKeyColumn[$row[$column_name]];
             } else {

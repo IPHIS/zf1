@@ -82,10 +82,10 @@ class Zend_Queue_Adapter_Memcacheq extends Zend_Queue_Adapter_AdapterAbstract
 
         $options = &$this->_options['driverOptions'];
 
-        if (!array_key_exists('host', $options)) {
+        if (!array_key_exists_wrapper('host', $options)) {
             $options['host'] = self::DEFAULT_HOST;
         }
-        if (!array_key_exists('port', $options)) {
+        if (!array_key_exists_wrapper('port', $options)) {
             $options['port'] = self::DEFAULT_PORT;
         }
 

@@ -122,30 +122,30 @@ abstract class Zend_Validate_Db_Abstract extends Zend_Validate_Abstract
             $options = $temp;
         }
 
-        if (!array_key_exists('table', $options) && !array_key_exists('schema', $options)) {
+        if (!array_key_exists_wrapper('table', $options) && !array_key_exists_wrapper('schema', $options)) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception('Table or Schema option missing!');
         }
 
-        if (!array_key_exists('field', $options)) {
+        if (!array_key_exists_wrapper('field', $options)) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception('Field option missing!');
         }
 
-        if (array_key_exists('adapter', $options)) {
+        if (array_key_exists_wrapper('adapter', $options)) {
             $this->setAdapter($options['adapter']);
         }
 
-        if (array_key_exists('exclude', $options)) {
+        if (array_key_exists_wrapper('exclude', $options)) {
             $this->setExclude($options['exclude']);
         }
 
         $this->setField($options['field']);
-        if (array_key_exists('table', $options)) {
+        if (array_key_exists_wrapper('table', $options)) {
             $this->setTable($options['table']);
         }
 
-        if (array_key_exists('schema', $options)) {
+        if (array_key_exists_wrapper('schema', $options)) {
             $this->setSchema($options['schema']);
         }
     }

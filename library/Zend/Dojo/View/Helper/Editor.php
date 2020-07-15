@@ -98,7 +98,7 @@ class Zend_Dojo_View_Helper_Editor extends Zend_Dojo_View_Helper_Dijit
         }
 
         $hiddenName = $id;
-        if (array_key_exists('id', $attribs)) {
+        if (array_key_exists_wrapper('id', $attribs)) {
             $hiddenId = $attribs['id'];
         } else {
             $hiddenId = $hiddenName;

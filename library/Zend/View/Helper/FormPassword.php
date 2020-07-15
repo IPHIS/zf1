@@ -67,7 +67,7 @@ class Zend_View_Helper_FormPassword extends Zend_View_Helper_FormElement
 
         // determine the XHTML value
         $valueString = ' value=""';
-        if (array_key_exists('renderPassword', $attribs)) {
+        if (array_key_exists_wrapper('renderPassword', $attribs)) {
             if ($attribs['renderPassword']) {
                 $valueString = ' value="' . $this->view->escape($value) . '"';
             }

@@ -242,11 +242,11 @@ class Zend_Validate_File_Count extends Zend_Validate_Abstract
      */
     public function isValid($value, $file = null)
     {
-        if (($file !== null) && !array_key_exists('destination', $file)) {
+        if (($file !== null) && !array_key_exists_wrapper('destination', $file)) {
             $file['destination'] = dirname($value);
         }
 
-        if (($file !== null) && array_key_exists('tmp_name', $file)) {
+        if (($file !== null) && array_key_exists_wrapper('tmp_name', $file)) {
             $value = $file['destination'] . DIRECTORY_SEPARATOR . $file['name'];
         }
 

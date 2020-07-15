@@ -391,7 +391,7 @@ class Zend_EventManager_EventManager implements Zend_EventManager_EventCollectio
      */
     public function getListeners($event)
     {
-        if (!array_key_exists($event, $this->events)) {
+        if (!array_key_exists_wrapper($event, $this->events)) {
             return new Zend_Stdlib_PriorityQueue();
         }
         return $this->events[$event];

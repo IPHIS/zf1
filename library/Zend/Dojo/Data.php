@@ -163,7 +163,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      */
     public function hasItem($id)
     {
-        return array_key_exists($id, $this->_items);
+        return array_key_exists_wrapper($id, $this->_items);
     }
 
     /**
@@ -300,7 +300,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
             return $this->_metadata;
         }
 
-        if (array_key_exists($key, $this->_metadata)) {
+        if (array_key_exists_wrapper($key, $this->_metadata)) {
             return $this->_metadata[$key];
         }
 
@@ -317,7 +317,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     {
         if (null === $key) {
             $this->_metadata = array();
-        } elseif (array_key_exists($key, $this->_metadata)) {
+        } elseif (array_key_exists_wrapper($key, $this->_metadata)) {
             unset($this->_metadata[$key]);
         }
         return $this;
@@ -331,13 +331,13 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      */
     public function fromArray(array $data)
     {
-        if (array_key_exists('identifier', $data)) {
+        if (array_key_exists_wrapper('identifier', $data)) {
             $this->setIdentifier($data['identifier']);
         }
-        if (array_key_exists('label', $data)) {
+        if (array_key_exists_wrapper('label', $data)) {
             $this->setLabel($data['label']);
         }
-        if (array_key_exists('items', $data) && is_array($data['items'])) {
+        if (array_key_exists_wrapper('items', $data) && is_array($data['items'])) {
             $this->setItems($data['items']);
         } else {
             $this->clearItems();
@@ -546,7 +546,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
             }
         }
 
-        if ((null === $id) && !array_key_exists($identifier, $item)) {
+        if ((null === $id) && !array_key_exists_wrapper($identifier, $item)) {
             require_once 'Zend/Dojo/Exception.php';
             throw new Zend_Dojo_Exception('Item must contain a column matching the currently set identifier');
         } elseif (null === $id) {

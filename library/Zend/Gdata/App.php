@@ -553,8 +553,8 @@ class Zend_Gdata_App
         //   - A similar header (If-Match/If-None-Match) hasn't already been
         //     set.
         if ($method != 'DELETE' && (
-                !array_key_exists('If-Match', $headers) &&
-                !array_key_exists('If-None-Match', $headers)
+                !array_key_exists_wrapper('If-Match', $headers) &&
+                !array_key_exists_wrapper('If-None-Match', $headers)
                 ) ) {
             $allowWeak = $method == 'GET';
             if ($ifMatchHeader = $this->generateIfMatchHeaderData(

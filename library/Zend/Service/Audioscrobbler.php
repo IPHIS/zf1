@@ -123,7 +123,7 @@ class Zend_Service_Audioscrobbler
      */
     public function get($field)
     {
-        if (array_key_exists($field, $this->_params)) {
+        if (array_key_exists_wrapper($field, $this->_params)) {
             return $this->_params[$field];
         } else {
             return false;

@@ -160,7 +160,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getLocation()
     {
-        if (array_key_exists('location', $this->_params)) {
+        if (array_key_exists_wrapper('location', $this->_params)) {
             return $this->_params['location'];
         } else {
             return null;
@@ -192,7 +192,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getLocationRadius()
     {
-        if (array_key_exists('location-radius', $this->_params)) {
+        if (array_key_exists_wrapper('location-radius', $this->_params)) {
             return $this->_params['location-radius'];
         } else {
             return null;
@@ -318,7 +318,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getRacy()
     {
-        if (array_key_exists('racy', $this->_params)) {
+        if (array_key_exists_wrapper('racy', $this->_params)) {
             return $this->_params['racy'];
         } else {
             return null;
@@ -363,7 +363,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getSafeSearch()
     {
-        if (array_key_exists('safeSearch', $this->_params)) {
+        if (array_key_exists_wrapper('safeSearch', $this->_params)) {
             return $this->_params['safeSearch'];
         }
         return $this;
@@ -392,7 +392,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getFormat()
     {
-        if (array_key_exists('format', $this->_params)) {
+        if (array_key_exists_wrapper('format', $this->_params)) {
             return $this->_params['format'];
         } else {
             return null;
@@ -407,7 +407,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getVideoQuery()
     {
-        if (array_key_exists('vq', $this->_params)) {
+        if (array_key_exists_wrapper('vq', $this->_params)) {
             return $this->_params['vq'];
         } else {
             return null;
@@ -421,7 +421,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getTime()
     {
-        if (array_key_exists('time', $this->_params)) {
+        if (array_key_exists_wrapper('time', $this->_params)) {
             return $this->_params['time'];
         } else {
             return null;
@@ -435,7 +435,7 @@ class Zend_Gdata_YouTube_VideoQuery extends Zend_Gdata_Query
      */
     public function getOrderBy()
     {
-        if (array_key_exists('orderby', $this->_params)) {
+        if (array_key_exists_wrapper('orderby', $this->_params)) {
             return $this->_params['orderby'];
         } else {
             return null;

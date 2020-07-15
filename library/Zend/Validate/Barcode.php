@@ -88,15 +88,15 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
         $options  = null;
         $checksum = null;
         if (is_array($adapter)) {
-            if (array_key_exists('options', $adapter)) {
+            if (array_key_exists_wrapper('options', $adapter)) {
                 $options = $adapter['options'];
             }
 
-            if (array_key_exists('checksum', $adapter)) {
+            if (array_key_exists_wrapper('checksum', $adapter)) {
                 $checksum = $adapter['checksum'];
             }
 
-            if (array_key_exists('adapter', $adapter)) {
+            if (array_key_exists_wrapper('adapter', $adapter)) {
                 $adapter = $adapter['adapter'];
             } else {
                 require_once 'Zend/Validate/Exception.php';

@@ -1292,7 +1292,7 @@ class Zend_Locale
         }
 
         $httplanguages = getenv('HTTP_ACCEPT_LANGUAGE');
-        if (empty($httplanguages) && array_key_exists('HTTP_ACCEPT_LANGUAGE', $_SERVER)) {
+        if (empty($httplanguages) && array_key_exists_wrapper('HTTP_ACCEPT_LANGUAGE', $_SERVER)) {
             $httplanguages = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
         }
 
@@ -1683,13 +1683,13 @@ class Zend_Locale
     public static function isLocale($locale, $strict = false, $compatible = true)
     {
         if (($locale instanceof Zend_Locale)
-            || (is_string($locale) && array_key_exists($locale, self::$_localeData))
+            || (is_string($locale) && array_key_exists_wrapper($locale, self::$_localeData))
         ) {
             return true;
         }
 
         // Is it an alias?
-        if (is_string($locale) && array_key_exists($locale, self::$_localeAliases)) {
+        if (is_string($locale) && array_key_exists_wrapper($locale, self::$_localeAliases)) {
             return true;
         }
 
@@ -1776,7 +1776,7 @@ class Zend_Locale
     public static function getLocaleToTerritory($territory)
     {
         $territory = strtoupper($territory);
-        if (array_key_exists($territory, self::$_territoryData)) {
+        if (array_key_exists_wrapper($territory, self::$_territoryData)) {
             return self::$_territoryData[$territory];
         }
 
@@ -1928,7 +1928,7 @@ class Zend_Locale
 
         $parts = explode('_', $locale);
         if (!isset(self::$_localeData[$parts[0]])) {
-            if ((count($parts) == 1) && array_key_exists($parts[0], self::$_territoryData)) {
+            if ((count($parts) == 1) && array_key_exists_wrapper($parts[0], self::$_territoryData)) {
                 return self::$_territoryData[$parts[0]];
             }
 

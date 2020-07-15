@@ -70,7 +70,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
         $hidden = preg_replace('/(name=")([^"]*)"/', 'id="$2" $1$2"', $hidden);
 
         foreach ($this->_requiredParams as $param) {
-            if (!array_key_exists($param, $params)) {
+            if (!array_key_exists_wrapper($param, $params)) {
                 require_once 'Zend/Dojo/View/Exception.php';
                 throw new Zend_Dojo_View_Exception('prepareSlider() requires minimally the "minimum", "maximum", and "discreteValues" parameters');
             }
@@ -79,7 +79,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
         $content = '';
         $attribs['value'] = $value;
 
-        if (!array_key_exists('onChange', $attribs)) {
+        if (!array_key_exists_wrapper('onChange', $attribs)) {
             $attribs['onChange'] = "dojo.byId('" . $id . "').value = arguments[0];";
         }
 
@@ -90,40 +90,40 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
 
         switch ($this->_sliderType) {
             case 'horizontal':
-                if (array_key_exists('topDecoration', $params)) {
+                if (array_key_exists_wrapper('topDecoration', $params)) {
                     $content .= $this->_prepareDecoration('topDecoration', $id, $params['topDecoration']);
                     unset($params['topDecoration']);
                 }
 
-                if (array_key_exists('bottomDecoration', $params)) {
+                if (array_key_exists_wrapper('bottomDecoration', $params)) {
                     $content .= $this->_prepareDecoration('bottomDecoration', $id, $params['bottomDecoration']);
                     unset($params['bottomDecoration']);
                 }
 
-                if (array_key_exists('leftDecoration', $params)) {
+                if (array_key_exists_wrapper('leftDecoration', $params)) {
                     unset($params['leftDecoration']);
                 }
 
-                if (array_key_exists('rightDecoration', $params)) {
+                if (array_key_exists_wrapper('rightDecoration', $params)) {
                     unset($params['rightDecoration']);
                 }
                 break;
             case 'vertical':
-                if (array_key_exists('leftDecoration', $params)) {
+                if (array_key_exists_wrapper('leftDecoration', $params)) {
                     $content .= $this->_prepareDecoration('leftDecoration', $id, $params['leftDecoration']);
                     unset($params['leftDecoration']);
                 }
 
-                if (array_key_exists('rightDecoration', $params)) {
+                if (array_key_exists_wrapper('rightDecoration', $params)) {
                     $content .= $this->_prepareDecoration('rightDecoration', $id, $params['rightDecoration']);
                     unset($params['rightDecoration']);
                 }
 
-                if (array_key_exists('topDecoration', $params)) {
+                if (array_key_exists_wrapper('topDecoration', $params)) {
                     unset($params['topDecoration']);
                 }
 
-                if (array_key_exists('bottomDecoration', $params)) {
+                if (array_key_exists_wrapper('bottomDecoration', $params)) {
                     unset($params['bottomDecoration']);
                 }
                 break;
@@ -150,7 +150,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
         }
 
         if (!is_array($decInfo)
-            || !array_key_exists('labels', $decInfo)
+            || !array_key_exists_wrapper('labels', $decInfo)
             || !is_array($decInfo['labels'])
         ) {
             return '';
@@ -158,7 +158,7 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
 
         $id .= '-' . $position;
 
-        if (!array_key_exists('dijit', $decInfo)) {
+        if (!array_key_exists_wrapper('dijit', $decInfo)) {
             $dijit = 'dijit.form.' . ucfirst($this->_sliderType) . 'Rule';
         } else {
             $dijit = $decInfo['dijit'];
@@ -170,20 +170,20 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
         $params  = array();
         $attribs = array();
         $labels  = $decInfo['labels'];
-        if (array_key_exists('params', $decInfo)) {
+        if (array_key_exists_wrapper('params', $decInfo)) {
             $params = $decInfo['params'];
         }
-        if (array_key_exists('attribs', $decInfo)) {
+        if (array_key_exists_wrapper('attribs', $decInfo)) {
             $attribs = $decInfo['attribs'];
         }
 
         $containerParams = null;
-        if (array_key_exists('container', $params)) {
+        if (array_key_exists_wrapper('container', $params)) {
             $containerParams = $params['container'];
             unset($params['container']);
         }
 
-        if (array_key_exists('labels', $params)) {
+        if (array_key_exists_wrapper('labels', $params)) {
             $labelsParams = $params['labels'];
             unset($params['labels']);
         } else {
@@ -195,12 +195,12 @@ abstract class Zend_Dojo_View_Helper_Slider extends Zend_Dojo_View_Helper_Dijit
         }
 
         $containerAttribs = null;
-        if (array_key_exists('container', $attribs)) {
+        if (array_key_exists_wrapper('container', $attribs)) {
             $containerAttribs = $attribs['container'];
             unset($attribs['container']);
         }
 
-        if (array_key_exists('labels', $attribs)) {
+        if (array_key_exists_wrapper('labels', $attribs)) {
             $labelsAttribs = $attribs['labels'];
             unset($attribs['labels']);
         } else {

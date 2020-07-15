@@ -135,7 +135,7 @@ class Zend_Translate {
             Zend_Loader::loadClass($options['adapter']);
         }
 
-        if (array_key_exists('cache', $options)) {
+        if (array_key_exists_wrapper('cache', $options)) {
             Zend_Translate_Adapter::setCache($options['cache']);
         }
 

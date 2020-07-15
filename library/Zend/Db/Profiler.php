@@ -357,7 +357,7 @@ class Zend_Db_Profiler
      */
     public function getQueryProfile($queryId)
     {
-        if (!array_key_exists($queryId, $this->_queryProfiles)) {
+        if (!array_key_exists_wrapper($queryId, $this->_queryProfiles)) {
             /**
              * @see Zend_Db_Profiler_Exception
              */

@@ -218,7 +218,7 @@ class Zend_Config_Xml extends Zend_Config
 
                 $value = (string) $value;
 
-                if (array_key_exists($key, $config)) {
+                if (array_key_exists_wrapper($key, $config)) {
                     if (!is_array($config[$key])) {
                         $config[$key] = array($config[$key]);
                     }
@@ -293,8 +293,8 @@ class Zend_Config_Xml extends Zend_Config
                     $value = (string) $value;
                 }
 
-                if (array_key_exists($key, $config)) {
-                    if (!is_array($config[$key]) || !array_key_exists(0, $config[$key])) {
+                if (array_key_exists_wrapper($key, $config)) {
+                    if (!is_array($config[$key]) || !array_key_exists_wrapper(0, $config[$key])) {
                         $config[$key] = array($config[$key]);
                     }
 

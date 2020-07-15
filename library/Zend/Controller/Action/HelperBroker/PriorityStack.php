@@ -42,7 +42,7 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
      */
     public function __get($helperName)
     {
-        if (!array_key_exists($helperName, $this->_helpersByNameRef)) {
+        if (!array_key_exists_wrapper($helperName, $this->_helpersByNameRef)) {
             return false;
         }
 
@@ -57,7 +57,7 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
      */
     public function __isset($helperName)
     {
-        return array_key_exists($helperName, $this->_helpersByNameRef);
+        return array_key_exists_wrapper($helperName, $this->_helpersByNameRef);
     }
 
     /**
@@ -102,9 +102,9 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
     public function offsetExists($priorityOrHelperName)
     {
         if (is_string($priorityOrHelperName)) {
-            return array_key_exists($priorityOrHelperName, $this->_helpersByNameRef);
+            return array_key_exists_wrapper($priorityOrHelperName, $this->_helpersByNameRef);
         } else {
-            return array_key_exists($priorityOrHelperName, $this->_helpersByPriority);
+            return array_key_exists_wrapper($priorityOrHelperName, $this->_helpersByPriority);
         }
     }
 
@@ -144,13 +144,13 @@ class Zend_Controller_Action_HelperBroker_PriorityStack implements IteratorAggre
             throw new Zend_Controller_Action_Exception('$helper must extend Zend_Controller_Action_Helper_Abstract.');
         }
 
-        if (array_key_exists($helper->getName(), $this->_helpersByNameRef)) {
+        if (array_key_exists_wrapper($helper->getName(), $this->_helpersByNameRef)) {
             // remove any object with the same name to retain BC compailitbility
             // @todo At ZF 2.0 time throw an exception here.
             $this->offsetUnset($helper->getName());
         }
 
-        if (array_key_exists($priority, $this->_helpersByPriority)) {
+        if (array_key_exists_wrapper($priority, $this->_helpersByPriority)) {
             $priority = $this->getNextFreeHigherPriority($priority);  // ensures LIFO
             trigger_error("A helper with the same priority already exists, reassigning to $priority", E_USER_WARNING);
         }

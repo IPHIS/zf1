@@ -271,7 +271,7 @@ class Zend_Tool_Framework_Manifest_Repository
         $metadatasByType = array();
 
         foreach ($this->_metadatas as $metadata) {
-            if (!array_key_exists($metadata->getType(), $metadatasByType)) {
+            if (!array_key_exists_wrapper($metadata->getType(), $metadatasByType)) {
                 $metadatasByType[$metadata->getType()] = array();
             }
             $metadatasByType[$metadata->getType()][] = $metadata;

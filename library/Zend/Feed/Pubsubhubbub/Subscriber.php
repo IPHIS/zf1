@@ -171,31 +171,31 @@ class Zend_Feed_Pubsubhubbub_Subscriber
             throw new Zend_Feed_Pubsubhubbub_Exception('Array or Zend_Config object'
                 . ' expected, got ' . gettype($config));
         }
-        if (array_key_exists('hubUrls', $config)) {
+        if (array_key_exists_wrapper('hubUrls', $config)) {
             $this->addHubUrls($config['hubUrls']);
         }
-        if (array_key_exists('callbackUrl', $config)) {
+        if (array_key_exists_wrapper('callbackUrl', $config)) {
             $this->setCallbackUrl($config['callbackUrl']);
         }
-        if (array_key_exists('topicUrl', $config)) {
+        if (array_key_exists_wrapper('topicUrl', $config)) {
             $this->setTopicUrl($config['topicUrl']);
         }
-        if (array_key_exists('storage', $config)) {
+        if (array_key_exists_wrapper('storage', $config)) {
             $this->setStorage($config['storage']);
         }
-        if (array_key_exists('leaseSeconds', $config)) {
+        if (array_key_exists_wrapper('leaseSeconds', $config)) {
             $this->setLeaseSeconds($config['leaseSeconds']);
         }
-        if (array_key_exists('parameters', $config)) {
+        if (array_key_exists_wrapper('parameters', $config)) {
             $this->setParameters($config['parameters']);
         }
-        if (array_key_exists('authentications', $config)) {
+        if (array_key_exists_wrapper('authentications', $config)) {
             $this->addAuthentications($config['authentications']);
         }
-        if (array_key_exists('usePathParameter', $config)) {
+        if (array_key_exists_wrapper('usePathParameter', $config)) {
             $this->usePathParameter($config['usePathParameter']);
         }
-        if (array_key_exists('preferredVerificationMode', $config)) {
+        if (array_key_exists_wrapper('preferredVerificationMode', $config)) {
             $this->setPreferredVerificationMode(
                 $config['preferredVerificationMode']
             );
@@ -519,7 +519,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
                 . ' of "' . $name . '" must be a non-empty string');
         }
-        if (array_key_exists($name, $this->_parameters)) {
+        if (array_key_exists_wrapper($name, $this->_parameters)) {
             unset($this->_parameters[$name]);
         }
         return $this;
@@ -642,7 +642,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber
         $this->_errors = array();
         $this->_asyncHubs = array();
         foreach ($hubs as $url) {
-            if (array_key_exists($url, $this->_authentications)) {
+            if (array_key_exists_wrapper($url, $this->_authentications)) {
                 $auth = $this->_authentications[$url];
                 $client->setAuth($auth[0], $auth[1]);
             }

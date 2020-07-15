@@ -117,7 +117,7 @@ class Zend_Feed_Reader_Extension_Slash_Entry
      */
     protected function _getData($name, $type = 'string')
     {
-        if (array_key_exists($name, $this->_data)) {
+        if (array_key_exists_wrapper($name, $this->_data)) {
             return $this->_data[$name];
         }
 

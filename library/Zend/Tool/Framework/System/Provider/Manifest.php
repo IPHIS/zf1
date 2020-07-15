@@ -72,15 +72,15 @@ class Zend_Tool_Framework_System_Provider_Manifest
                 $metadataAttrs = urldecode(http_build_query($metadataAttrs, null, ', '));
             }
 
-            if (!array_key_exists($metadataType, $metadataTree)) {
+            if (!array_key_exists_wrapper($metadataType, $metadataTree)) {
                 $metadataTree[$metadataType] = array();
             }
 
-            if (!array_key_exists($metadataName, $metadataTree[$metadataType])) {
+            if (!array_key_exists_wrapper($metadataName, $metadataTree[$metadataType])) {
                 $metadataTree[$metadataType][$metadataName] = array();
             }
 
-            if (!array_key_exists($metadataAttrs, $metadataTree[$metadataType][$metadataName])) {
+            if (!array_key_exists_wrapper($metadataAttrs, $metadataTree[$metadataType][$metadataName])) {
                 $metadataTree[$metadataType][$metadataName][$metadataAttrs] = array();
             }
 

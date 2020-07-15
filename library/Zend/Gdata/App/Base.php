@@ -380,7 +380,7 @@ abstract class Zend_Gdata_App_Base
         $key = $prefix . ' ' .
                ($majorVersion === null ? 'NULL' : $majorVersion) .
                ' '. ($minorVersion === null ? 'NULL' : $minorVersion);
-        if (array_key_exists($key, self::$_namespaceLookupCache))
+        if (array_key_exists_wrapper($key, self::$_namespaceLookupCache))
           return self::$_namespaceLookupCache[$key];
         // If no match, return the prefix by default
         $result = $prefix;

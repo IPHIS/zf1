@@ -106,15 +106,15 @@ class Zend_Filter_Boolean implements Zend_Filter_Interface
             $options = $temp;
         }
 
-        if (array_key_exists('type', $options)) {
+        if (array_key_exists_wrapper('type', $options)) {
             $this->setType($options['type']);
         }
 
-        if (array_key_exists('casting', $options)) {
+        if (array_key_exists_wrapper('casting', $options)) {
             $this->setCasting($options['casting']);
         }
 
-        if (array_key_exists('locale', $options)) {
+        if (array_key_exists_wrapper('locale', $options)) {
             $this->setLocale($options['locale']);
         }
     }

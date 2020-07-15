@@ -82,7 +82,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getAuthors()
     {
-        if (array_key_exists('authors', $this->_data)) {
+        if (array_key_exists_wrapper('authors', $this->_data)) {
             return $this->_data['authors'];
         }
 
@@ -124,7 +124,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getContent()
     {
-        if (array_key_exists('content', $this->_data)) {
+        if (array_key_exists_wrapper('content', $this->_data)) {
             return $this->_data['content'];
         }
 
@@ -192,7 +192,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getDateCreated()
     {
-        if (array_key_exists('datecreated', $this->_data)) {
+        if (array_key_exists_wrapper('datecreated', $this->_data)) {
             return $this->_data['datecreated'];
         }
 
@@ -221,7 +221,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getDateModified()
     {
-        if (array_key_exists('datemodified', $this->_data)) {
+        if (array_key_exists_wrapper('datemodified', $this->_data)) {
             return $this->_data['datemodified'];
         }
 
@@ -250,7 +250,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getDescription()
     {
-        if (array_key_exists('description', $this->_data)) {
+        if (array_key_exists_wrapper('description', $this->_data)) {
             return $this->_data['description'];
         }
 
@@ -272,7 +272,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getEnclosure()
     {
-        if (array_key_exists('enclosure', $this->_data)) {
+        if (array_key_exists_wrapper('enclosure', $this->_data)) {
             return $this->_data['enclosure'];
         }
 
@@ -299,7 +299,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getId()
     {
-        if (array_key_exists('id', $this->_data)) {
+        if (array_key_exists_wrapper('id', $this->_data)) {
             return $this->_data['id'];
         }
 
@@ -327,7 +327,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getBaseUrl()
     {
-        if (array_key_exists('baseUrl', $this->_data)) {
+        if (array_key_exists_wrapper('baseUrl', $this->_data)) {
             return $this->_data['baseUrl'];
         }
 
@@ -356,7 +356,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getLink($index = 0)
     {
-        if (!array_key_exists('links', $this->_data)) {
+        if (!array_key_exists_wrapper('links', $this->_data)) {
             $this->getLinks();
         }
 
@@ -374,7 +374,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getLinks()
     {
-        if (array_key_exists('links', $this->_data)) {
+        if (array_key_exists_wrapper('links', $this->_data)) {
             return $this->_data['links'];
         }
 
@@ -413,7 +413,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getTitle()
     {
-        if (array_key_exists('title', $this->_data)) {
+        if (array_key_exists_wrapper('title', $this->_data)) {
             return $this->_data['title'];
         }
 
@@ -435,7 +435,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getCommentCount()
     {
-        if (array_key_exists('commentcount', $this->_data)) {
+        if (array_key_exists_wrapper('commentcount', $this->_data)) {
             return $this->_data['commentcount'];
         }
 
@@ -462,7 +462,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getCommentLink()
     {
-        if (array_key_exists('commentlink', $this->_data)) {
+        if (array_key_exists_wrapper('commentlink', $this->_data)) {
             return $this->_data['commentlink'];
         }
 
@@ -489,7 +489,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getCommentFeedLink($type = 'atom')
     {
-        if (array_key_exists('commentfeedlink', $this->_data)) {
+        if (array_key_exists_wrapper('commentfeedlink', $this->_data)) {
             return $this->_data['commentfeedlink'];
         }
 
@@ -516,7 +516,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getCategories()
     {
-        if (array_key_exists('categories', $this->_data)) {
+        if (array_key_exists_wrapper('categories', $this->_data)) {
             return $this->_data['categories'];
         }
 
@@ -557,7 +557,7 @@ class Zend_Feed_Reader_Extension_Atom_Entry
      */
     public function getSource()
     {
-        if (array_key_exists('source', $this->_data)) {
+        if (array_key_exists_wrapper('source', $this->_data)) {
             return $this->_data['source'];
         }
 

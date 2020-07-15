@@ -138,7 +138,7 @@ class Zend_Json_Server_Request
      */
     public function getParam($index)
     {
-        if (array_key_exists($index, $this->_params)) {
+        if (array_key_exists_wrapper($index, $this->_params)) {
             return $this->_params[$index];
         }
 

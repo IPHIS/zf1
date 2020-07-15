@@ -241,7 +241,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      */
     public function offsetGet($key)
     {
-        if (array_key_exists($key, $this->_entry)) {
+        if (array_key_exists_wrapper($key, $this->_entry)) {
             return $this->_entry[$key];
         }
     }
@@ -254,7 +254,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      */
     public function offsetUnset($key)
     {
-        if (array_key_exists($key, $this->_entry)) {
+        if (array_key_exists_wrapper($key, $this->_entry)) {
             unset($this->_entry[$key]);
         }
     }
@@ -267,7 +267,7 @@ class Zend_Gdata_App_Feed extends Zend_Gdata_App_FeedSourceParent
      */
     public function offsetExists($key)
     {
-        return (array_key_exists($key, $this->_entry));
+        return (array_key_exists_wrapper($key, $this->_entry));
     }
 
    /**

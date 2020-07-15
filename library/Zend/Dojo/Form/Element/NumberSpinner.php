@@ -203,7 +203,7 @@ class Zend_Dojo_Form_Element_NumberSpinner extends Zend_Dojo_Form_Element_Valida
             return null;
         }
         $constraints = $this->getDijitParam('constraints');
-        if (!array_key_exists('min', $constraints)) {
+        if (!array_key_exists_wrapper('min', $constraints)) {
             return null;
         }
         return $constraints['min'];
@@ -237,7 +237,7 @@ class Zend_Dojo_Form_Element_NumberSpinner extends Zend_Dojo_Form_Element_Valida
             return null;
         }
         $constraints = $this->getDijitParam('constraints');
-        if (!array_key_exists('max', $constraints)) {
+        if (!array_key_exists_wrapper('max', $constraints)) {
             return null;
         }
         return $constraints['max'];

@@ -64,21 +64,21 @@ class Zend_Dojo_View_Helper_NumberSpinner extends Zend_Dojo_View_Helper_Dijit
     public function numberSpinner($id, $value = null, array $params = array(), array $attribs = array())
     {
         // Get constraints and serialize to JSON if necessary
-        if (array_key_exists('constraints', $params)) {
+        if (array_key_exists_wrapper('constraints', $params)) {
             if (!is_array($params['constraints'])) {
                 unset($params['constraints']);
             }
         } else {
             $constraints = array();
-            if (array_key_exists('min', $params)) {
+            if (array_key_exists_wrapper('min', $params)) {
                 $constraints['min'] = $params['min'];
                 unset($params['min']);
             }
-            if (array_key_exists('max', $params)) {
+            if (array_key_exists_wrapper('max', $params)) {
                 $constraints['max'] = $params['max'];
                 unset($params['max']);
             }
-            if (array_key_exists('places', $params)) {
+            if (array_key_exists_wrapper('places', $params)) {
                 $constraints['places'] = $params['places'];
                 unset($params['places']);
             }

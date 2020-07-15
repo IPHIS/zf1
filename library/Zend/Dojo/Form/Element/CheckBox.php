@@ -86,11 +86,11 @@ class Zend_Dojo_Form_Element_CheckBox extends Zend_Dojo_Form_Element_Dijit
      */
     public function setOptions(array $options)
     {
-        if (array_key_exists('checkedValue', $options)) {
+        if (array_key_exists_wrapper('checkedValue', $options)) {
             $this->setCheckedValue($options['checkedValue']);
             unset($options['checkedValue']);
         }
-        if (array_key_exists('uncheckedValue', $options)) {
+        if (array_key_exists_wrapper('uncheckedValue', $options)) {
             $this->setUncheckedValue($options['uncheckedValue']);
             unset($options['uncheckedValue']);
         }

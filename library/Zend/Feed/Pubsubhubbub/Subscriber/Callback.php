@@ -161,7 +161,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_Callback
             'hub_verify_token',
         );
         foreach ($required as $key) {
-            if (!array_key_exists($key, $httpGetData)) {
+            if (!array_key_exists_wrapper($key, $httpGetData)) {
                 return false;
             }
         }
@@ -171,7 +171,7 @@ class Zend_Feed_Pubsubhubbub_Subscriber_Callback
             return false;
         }
         if ($httpGetData['hub_mode'] == 'subscribe'
-            && !array_key_exists('hub_lease_seconds', $httpGetData)
+            && !array_key_exists_wrapper('hub_lease_seconds', $httpGetData)
         ) {
             return false;
         }

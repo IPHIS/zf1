@@ -81,7 +81,7 @@ class Zend_Cache_Backend
                 Zend_Cache::throwException("Incorrect option name : $name");
             }
             $name = strtolower($name);
-            if (array_key_exists($name, $this->_directives)) {
+            if (array_key_exists_wrapper($name, $this->_directives)) {
                 $this->_directives[$name] = $value;
             }
 
@@ -104,7 +104,7 @@ class Zend_Cache_Backend
             Zend_Cache::throwException("Incorrect option name : $name");
         }
         $name = strtolower($name);
-        if (array_key_exists($name, $this->_options)) {
+        if (array_key_exists_wrapper($name, $this->_options)) {
             $this->_options[$name] = $value;
         }
     }
@@ -120,11 +120,11 @@ class Zend_Cache_Backend
     {
         $name = strtolower($name);
 
-        if (array_key_exists($name, $this->_options)) {
+        if (array_key_exists_wrapper($name, $this->_options)) {
             return $this->_options[$name];
         }
 
-        if (array_key_exists($name, $this->_directives)) {
+        if (array_key_exists_wrapper($name, $this->_directives)) {
             return $this->_directives[$name];
         }
 
