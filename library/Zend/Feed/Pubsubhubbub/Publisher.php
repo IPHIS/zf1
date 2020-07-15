@@ -95,13 +95,13 @@ class Zend_Feed_Pubsubhubbub_Publisher
             throw new Zend_Feed_Pubsubhubbub_Exception('Array or Zend_Config object'
                 . 'expected, got ' . gettype($config));
         }
-        if (array_key_exists('hubUrls', $config)) {
+        if (array_key_exists_wrapper('hubUrls', $config)) {
             $this->addHubUrls($config['hubUrls']);
         }
-        if (array_key_exists('updatedTopicUrls', $config)) {
+        if (array_key_exists_wrapper('updatedTopicUrls', $config)) {
             $this->addUpdatedTopicUrls($config['updatedTopicUrls']);
         }
-        if (array_key_exists('parameters', $config)) {
+        if (array_key_exists_wrapper('parameters', $config)) {
             $this->setParameters($config['parameters']);
         }
         return $this;
@@ -347,7 +347,7 @@ class Zend_Feed_Pubsubhubbub_Publisher
             throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "name"'
                 .' of "' . $name . '" must be a non-empty string');
         }
-        if (array_key_exists($name, $this->_parameters)) {
+        if (array_key_exists_wrapper($name, $this->_parameters)) {
             unset($this->_parameters[$name]);
         }
         return $this;

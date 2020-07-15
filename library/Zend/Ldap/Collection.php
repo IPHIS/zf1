@@ -138,7 +138,7 @@ class Zend_Ldap_Collection implements Iterator, Countable
             if ($this->_current < 0) {
                 $this->rewind();
             }
-            if (!array_key_exists($this->_current, $this->_cache)) {
+            if (!array_key_exists_wrapper($this->_current, $this->_cache)) {
                 $current = $this->_iterator->current();
                 if ($current === null) {
                     return null;

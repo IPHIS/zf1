@@ -86,7 +86,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
         } else {
             // check application id
             $options = parent::optionsToArray($options);
-            if (!array_key_exists(self::OPTION_APP_ID, $options)) {
+            if (!array_key_exists_wrapper(self::OPTION_APP_ID, $options)) {
                 /**
                  * @see Zend_Service_Ebay_Finding_Exception
                  */
@@ -247,7 +247,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
     protected function _findItems(array $options, $operation)
     {
         // set default output selector value
-        if (!array_key_exists('outputSelector', $options)) {
+        if (!array_key_exists_wrapper('outputSelector', $options)) {
             $options['outputSelector'] = array('AspectHistogram',
                                                'CategoryHistogram',
                                                'SellerInfo',

@@ -139,10 +139,10 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
                 if (!is_array($productId)) {
                     $productId = array('' => $productId);
                 }
-                $arguments[] = array_key_exists('', $productId)
+                $arguments[] = array_key_exists_wrapper('', $productId)
                              ? $productId['']
                              : null;
-                $arguments[] = array_key_exists('type', $productId)
+                $arguments[] = array_key_exists_wrapper('type', $productId)
                              ? $productId['type']
                              : null;
                 break;
@@ -181,7 +181,7 @@ class Zend_Service_Ebay_Finding_Response_Items extends Zend_Service_Ebay_Finding
 
         // verify cache
         $id = serialize($arguments);
-        if (!array_key_exists($id, self::$_pageCache)) {
+        if (!array_key_exists_wrapper($id, self::$_pageCache)) {
             if ($number == $this->paginationOutput->pageNumber) {
                 // add itself to cache
                 $new = $this;

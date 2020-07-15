@@ -70,7 +70,7 @@ class Zend_Form_Decorator_File
         }
 
         foreach ($this->_attribBlacklist as $key) {
-            if (array_key_exists($key, $attribs)) {
+            if (array_key_exists_wrapper($key, $attribs)) {
                 unset($attribs[$key]);
             }
         }
@@ -98,7 +98,7 @@ class Zend_Form_Decorator_File
 
         $name      = $element->getName();
         $attribs   = $this->getAttribs();
-        if (!array_key_exists('id', $attribs)) {
+        if (!array_key_exists_wrapper('id', $attribs)) {
             $attribs['id'] = $name;
         }
 

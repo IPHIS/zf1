@@ -210,7 +210,7 @@ class Zend_Tool_Framework_Client_Response
 
         if ($options) {
             foreach ($this->_decorators as $decoratorName => $decorator) {
-                if (array_key_exists($decoratorName, $options)) {
+                if (array_key_exists_wrapper($decoratorName, $options)) {
                     $content = $decorator->decorate($content, $options[$decoratorName]);
                 }
             }

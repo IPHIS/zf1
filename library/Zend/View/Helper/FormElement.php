@@ -125,12 +125,12 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         $attribs = (array)$attribs;
 
         // Normalize readonly tag
-        if (array_key_exists('readonly', $attribs)) {
+        if (array_key_exists_wrapper('readonly', $attribs)) {
             $attribs['readonly'] = 'readonly';
         }
 
         // Disable attribute
-        if (array_key_exists('disable', $attribs)) {
+        if (array_key_exists_wrapper('disable', $attribs)) {
            if (is_scalar($attribs['disable'])) {
                 // disable the element
                 $info['disable'] = (bool)$attribs['disable'];
@@ -140,7 +140,7 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         }
 
         // Set ID for element
-        if (array_key_exists('id', $attribs)) {
+        if (array_key_exists_wrapper('id', $attribs)) {
             $info['id'] = (string)$attribs['id'];
         } else if ('' !== $info['name']) {
             $info['id'] = trim(strtr($info['name'],
@@ -148,29 +148,29 @@ abstract class Zend_View_Helper_FormElement extends Zend_View_Helper_HtmlElement
         }
         
         // Remove NULL name attribute override
-        if (array_key_exists('name', $attribs) && is_null($attribs['name'])) {
+        if (array_key_exists_wrapper('name', $attribs) && is_null($attribs['name'])) {
         	unset($attribs['name']);
         }
         
         // Override name in info if specified in attribs
-        if (array_key_exists('name', $attribs) && $attribs['name'] != $info['name']) {
+        if (array_key_exists_wrapper('name', $attribs) && $attribs['name'] != $info['name']) {
             $info['name'] = $attribs['name'];
         }
 
         // Determine escaping from attributes
-        if (array_key_exists('escape', $attribs)) {
+        if (array_key_exists_wrapper('escape', $attribs)) {
             $info['escape'] = (bool)$attribs['escape'];
         }
 
         // Determine listsetp from attributes
-        if (array_key_exists('listsep', $attribs)) {
+        if (array_key_exists_wrapper('listsep', $attribs)) {
             $info['listsep'] = (string)$attribs['listsep'];
         }
 
         // Remove attribs that might overwrite the other keys. We do this LAST
         // because we needed the other attribs values earlier.
         foreach ($info as $key => $val) {
-            if (array_key_exists($key, $attribs)) {
+            if (array_key_exists_wrapper($key, $attribs)) {
                 unset($attribs[$key]);
             }
         }

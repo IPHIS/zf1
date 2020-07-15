@@ -648,7 +648,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                     $this->addDisplayGroupPrefixPath($prefix, $path);
                     continue;
                 }
-                if (array_key_exists('prefix', $value) && array_key_exists('path', $value)) {
+                if (array_key_exists_wrapper('prefix', $value) && array_key_exists_wrapper('path', $value)) {
                     $this->addDisplayGroupPrefixPath($value['prefix'], $value['path']);
                 }
             }
@@ -1117,14 +1117,14 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
                 $options['decorators'] = $this->_elementDecorators;
             }
         } elseif (is_array($options)) {
-            if (array_key_exists('prefixPath', $options)) {
+            if (array_key_exists_wrapper('prefixPath', $options)) {
                 $options['prefixPath'] = array_merge($prefixPaths, $options['prefixPath']);
             } else {
                 $options['prefixPath'] = $prefixPaths;
             }
 
             if (is_array($this->_elementDecorators)
-                && !array_key_exists('decorators', $options)
+                && !array_key_exists_wrapper('decorators', $options)
             ) {
                 $options['decorators'] = $this->_elementDecorators;
             }
@@ -1212,7 +1212,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function getElement($name)
     {
-        if (array_key_exists($name, $this->_elements)) {
+        if (array_key_exists_wrapper($name, $this->_elements)) {
             return $this->_elements[$name];
         }
         return null;
@@ -1239,7 +1239,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         $name = (string) $name;
         if (isset($this->_elements[$name])) {
             unset($this->_elements[$name]);
-            if (array_key_exists($name, $this->_order)) {
+            if (array_key_exists_wrapper($name, $this->_order)) {
                 unset($this->_order[$name]);
                 $this->_orderUpdated = true;
             } else {
@@ -1264,7 +1264,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function clearElements()
     {
         foreach (array_keys($this->_elements) as $key) {
-            if (array_key_exists($key, $this->_order)) {
+            if (array_key_exists_wrapper($key, $this->_order)) {
                 unset($this->_order[$key]);
             }
         }
@@ -1295,14 +1295,14 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             if (($belongsTo = $element->getBelongsTo()) !== $eBelongTo) {
                 $check = $this->_dissolveArrayValue($defaults, $belongsTo);
             }
-            if (array_key_exists($name, (array)$check)) {
+            if (array_key_exists_wrapper($name, (array)$check)) {
                 $this->setDefault($name, $check[$name]);
                 $defaults = $this->_dissolveArrayUnsetKey($defaults, $belongsTo, $name);
             }
         }
         /** @var Zend_Form_SubForm $form */
         foreach ($this->getSubForms() as $name => $form) {
-            if (!$form->isArray() && array_key_exists($name, $defaults)) {
+            if (!$form->isArray() && array_key_exists_wrapper($name, $defaults)) {
                 $form->setDefaults($defaults[$name]);
             } else {
                 $form->setDefaults($defaults);
@@ -1752,9 +1752,9 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function removeSubForm($name)
     {
         $name = (string) $name;
-        if (array_key_exists($name, $this->_subForms)) {
+        if (array_key_exists_wrapper($name, $this->_subForms)) {
             unset($this->_subForms[$name]);
-            if (array_key_exists($name, $this->_order)) {
+            if (array_key_exists_wrapper($name, $this->_order)) {
                 unset($this->_order[$name]);
                 $this->_orderUpdated = true;
             }
@@ -1772,7 +1772,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function clearSubForms()
     {
         foreach (array_keys($this->_subForms) as $key) {
-            if (array_key_exists($key, $this->_order)) {
+            if (array_key_exists_wrapper($key, $this->_order)) {
                 unset($this->_order[$key]);
             }
         }
@@ -2022,17 +2022,17 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function removeDisplayGroup($name)
     {
         $name = (string) $name;
-        if (array_key_exists($name, $this->_displayGroups)) {
+        if (array_key_exists_wrapper($name, $this->_displayGroups)) {
             /** @var Zend_Form_Element $element */
             foreach ($this->_displayGroups[$name] as $key => $element) {
-                if (array_key_exists($key, $this->_elements)) {
+                if (array_key_exists_wrapper($key, $this->_elements)) {
                     $this->_order[$key]  = $element->getOrder();
                     $this->_orderUpdated = true;
                 }
             }
             unset($this->_displayGroups[$name]);
 
-            if (array_key_exists($name, $this->_order)) {
+            if (array_key_exists_wrapper($name, $this->_order)) {
                 unset($this->_order[$name]);
                 $this->_orderUpdated = true;
             }
@@ -2050,7 +2050,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     public function clearDisplayGroups()
     {
         foreach ($this->_displayGroups as $key => $group) {
-            if (array_key_exists($key, $this->_order)) {
+            if (array_key_exists_wrapper($key, $this->_order)) {
                 unset($this->_order[$key]);
             }
             /** @var Zend_Form_Element $element */
@@ -2160,12 +2160,12 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
         $segs  = ('' !== $path) ? explode('/', $path) : array();
 
         foreach ($segs as $seg) {
-            if (!array_key_exists($seg, (array)$unset)) {
+            if (!array_key_exists_wrapper($seg, (array)$unset)) {
                 return $array;
             }
             $unset =& $unset[$seg];
         }
-        if (array_key_exists($key, (array)$unset)) {
+        if (array_key_exists_wrapper($key, (array)$unset)) {
             unset($unset[$key]);
         }
         return $array;
@@ -2877,11 +2877,11 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
     {
         $decorator = $this->getDecorator($name);
         if ($decorator) {
-            if (array_key_exists($name, $this->_decorators)) {
+            if (array_key_exists_wrapper($name, $this->_decorators)) {
                 unset($this->_decorators[$name]);
             } else {
                 $class = get_class($decorator);
-                if (!array_key_exists($class, $this->_decorators)) {
+                if (!array_key_exists_wrapper($class, $this->_decorators)) {
                     return false;
                 }
                 unset($this->_decorators[$class]);
@@ -2924,7 +2924,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
             } else {
                 $elementObjs = $this->getElements();
                 foreach ($elements as $name) {
-                    if (array_key_exists($name, $elementObjs)) {
+                    if (array_key_exists_wrapper($name, $elementObjs)) {
                         unset($elementObjs[$name]);
                     }
                 }
@@ -3394,7 +3394,7 @@ class Zend_Form implements Iterator, Countable, Zend_Validate_Interface
      */
     public function removeFromIteration($name)
     {
-        if (array_key_exists($name, $this->_order)) {
+        if (array_key_exists_wrapper($name, $this->_order)) {
             unset($this->_order[$name]);
             $this->_orderUpdated = true;
         }

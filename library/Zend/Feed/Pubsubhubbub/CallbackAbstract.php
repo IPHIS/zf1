@@ -95,7 +95,7 @@ abstract class Zend_Feed_Pubsubhubbub_CallbackAbstract
             throw new Zend_Feed_Pubsubhubbub_Exception('Array or Zend_Config object'
             . 'expected, got ' . gettype($config));
         }
-        if (array_key_exists('storage', $config)) {
+        if (array_key_exists_wrapper('storage', $config)) {
             $this->setStorage($config['storage']);
         }
         return $this;

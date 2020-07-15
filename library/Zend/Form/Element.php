@@ -2102,7 +2102,7 @@ class Zend_Form_Element implements Zend_Validate_Interface
         $origName = $filter['filter'];
         $name     = $this->getPluginLoader(self::FILTER)->load($filter['filter']);
 
-        if (array_key_exists($name, $this->_filters)) {
+        if (array_key_exists_wrapper($name, $this->_filters)) {
             require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception(sprintf('Filter instance already exists for filter "%s"', $origName));
         }
@@ -2151,13 +2151,13 @@ class Zend_Form_Element implements Zend_Validate_Interface
         $origName = $validator['validator'];
         $name     = $this->getPluginLoader(self::VALIDATE)->load($validator['validator']);
 
-        if (array_key_exists($name, $this->_validators)) {
+        if (array_key_exists_wrapper($name, $this->_validators)) {
             require_once 'Zend/Form/Exception.php';
             throw new Zend_Form_Exception(sprintf('Validator instance already exists for validator "%s"', $origName));
         }
 
         $messages = false;
-        if (isset($validator['options']) && array_key_exists('messages', (array)$validator['options'])) {
+        if (isset($validator['options']) && array_key_exists_wrapper('messages', (array)$validator['options'])) {
             $messages = $validator['options']['messages'];
             unset($validator['options']['messages']);
         }

@@ -119,7 +119,7 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
         $driverOptions  = array();
 
         // Normalize the options and merge with the defaults
-        if (array_key_exists('options', $options)) {
+        if (array_key_exists_wrapper('options', $options)) {
             if (!is_array($options['options'])) {
                 require_once 'Zend/Queue/Exception.php';
                 throw new Zend_Queue_Exception("Configuration array 'options' must be an array");
@@ -130,7 +130,7 @@ abstract class Zend_Queue_Adapter_AdapterAbstract
                 $adapterOptions[$key] = $value;
             }
         }
-        if (array_key_exists('driverOptions', $options)) {
+        if (array_key_exists_wrapper('driverOptions', $options)) {
             // can't use array_merge() because keys might be integers
             foreach ((array)$options['driverOptions'] as $key => $value) {
                 $driverOptions[$key] = $value;

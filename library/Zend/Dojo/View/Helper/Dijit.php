@@ -173,7 +173,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
      */
     public function _createFormElement($id, $value, array $params, array $attribs, $dijit = null)
     {
-        if (!array_key_exists('id', $attribs)) {
+        if (!array_key_exists_wrapper('id', $attribs)) {
             $attribs['id'] = $id;
         }
         $attribs['name']  = $id;
@@ -210,7 +210,7 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
             case 'element':
                 $stripParams = array('id', 'name', 'value', 'type');
                 foreach (array('checked', 'disabled', 'readonly') as $attrib) {
-                    if (array_key_exists($attrib, $attribs)) {
+                    if (array_key_exists_wrapper($attrib, $attribs)) {
                         if ($attribs[$attrib]) {
                             $attribs[$attrib] = $attrib;
                         } else {
@@ -226,14 +226,14 @@ abstract class Zend_Dojo_View_Helper_Dijit extends Zend_View_Helper_HtmlElement
         }
 
         foreach ($stripParams as $param) {
-            if (array_key_exists($param, $params)) {
+            if (array_key_exists_wrapper($param, $params)) {
                 unset($params[$param]);
             }
         }
 
         // Normalize constraints, if present
         foreach ($this->_jsonParams as $param) {
-            if (array_key_exists($param, $params)) {
+            if (array_key_exists_wrapper($param, $params)) {
                 require_once 'Zend/Json.php';
 
                 if (is_array($params[$param])) {

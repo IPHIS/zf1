@@ -191,7 +191,7 @@ class Zend_Loader_Autoloader
     public function getNamespaceAutoloaders($namespace)
     {
         $namespace = (string) $namespace;
-        if (!array_key_exists($namespace, $this->_namespaceAutoloaders)) {
+        if (!array_key_exists_wrapper($namespace, $this->_namespaceAutoloaders)) {
             return array();
         }
         return $this->_namespaceAutoloaders[$namespace];

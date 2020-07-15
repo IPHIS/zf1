@@ -711,7 +711,7 @@ class Zend_Gdata_YouTube_VideoEntry extends Zend_Gdata_YouTube_MediaEntry
     {
         $this->ensureMediaGroupIsNotNull();
         if ($this->getMediaGroup()->getPlayer() != null &&
-             array_key_exists(0, $this->getMediaGroup()->getPlayer())) {
+             array_key_exists_wrapper(0, $this->getMediaGroup()->getPlayer())) {
             $players = $this->getMediaGroup()->getPlayer();
             return $players[0]->getUrl();
         } else {

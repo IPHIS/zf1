@@ -153,38 +153,38 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         $this->setFilterPath(null);
 
         // user-defined escaping callback
-        if (array_key_exists('escape', $config)) {
+        if (array_key_exists_wrapper('escape', $config)) {
             $this->setEscape($config['escape']);
         }
 
         // encoding
-        if (array_key_exists('encoding', $config)) {
+        if (array_key_exists_wrapper('encoding', $config)) {
             $this->setEncoding($config['encoding']);
         }
 
         // base path
-        if (array_key_exists('basePath', $config)) {
+        if (array_key_exists_wrapper('basePath', $config)) {
             $prefix = 'Zend_View';
-            if (array_key_exists('basePathPrefix', $config)) {
+            if (array_key_exists_wrapper('basePathPrefix', $config)) {
                 $prefix = $config['basePathPrefix'];
             }
             $this->setBasePath($config['basePath'], $prefix);
         }
 
         // user-defined view script path
-        if (array_key_exists('scriptPath', $config)) {
+        if (array_key_exists_wrapper('scriptPath', $config)) {
             $this->addScriptPath($config['scriptPath']);
         }
 
         // user-defined helper path
-        if (array_key_exists('helperPath', $config)) {
+        if (array_key_exists_wrapper('helperPath', $config)) {
             if (is_array($config['helperPath'])) {
                 foreach ($config['helperPath'] as $prefix => $path) {
                     $this->addHelperPath($path, $prefix);
                 }
             } else {
                 $prefix = 'Zend_View_Helper';
-                if (array_key_exists('helperPathPrefix', $config)) {
+                if (array_key_exists_wrapper('helperPathPrefix', $config)) {
                     $prefix = $config['helperPathPrefix'];
                 }
                 $this->addHelperPath($config['helperPath'], $prefix);
@@ -192,14 +192,14 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         }
 
         // user-defined filter path
-        if (array_key_exists('filterPath', $config)) {
+        if (array_key_exists_wrapper('filterPath', $config)) {
             if (is_array($config['filterPath'])) {
                 foreach ($config['filterPath'] as $prefix => $path) {
                     $this->addFilterPath($path, $prefix);
                 }
             } else {
                 $prefix = 'Zend_View_Filter';
-                if (array_key_exists('filterPathPrefix', $config)) {
+                if (array_key_exists_wrapper('filterPathPrefix', $config)) {
                     $prefix = $config['filterPathPrefix'];
                 }
                 $this->addFilterPath($config['filterPath'], $prefix);
@@ -207,21 +207,21 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
         }
 
         // user-defined filters
-        if (array_key_exists('filter', $config)) {
+        if (array_key_exists_wrapper('filter', $config)) {
             $this->addFilter($config['filter']);
         }
 
         // strict vars
-        if (array_key_exists('strictVars', $config)) {
+        if (array_key_exists_wrapper('strictVars', $config)) {
             $this->strictVars($config['strictVars']);
         }
 
         // LFI protection flag
-        if (array_key_exists('lfiProtectionOn', $config)) {
+        if (array_key_exists_wrapper('lfiProtectionOn', $config)) {
             $this->setLfiProtection($config['lfiProtectionOn']);
         }
 
-        if (array_key_exists('assign', $config)
+        if (array_key_exists_wrapper('assign', $config)
             && is_array($config['assign'])
         ) {
             foreach ($config['assign'] as $key => $value) {
@@ -499,7 +499,7 @@ abstract class Zend_View_Abstract implements Zend_View_Interface
             throw $e;
         }
 
-        if (!array_key_exists($type, $this->_loaders)) {
+        if (!array_key_exists_wrapper($type, $this->_loaders)) {
             $prefix     = 'Zend_View_';
             $pathPrefix = 'Zend/View/';
 

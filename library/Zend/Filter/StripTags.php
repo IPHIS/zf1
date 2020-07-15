@@ -84,8 +84,8 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if ((!is_array($options)) || (is_array($options) && !array_key_exists('allowTags', $options) &&
-            !array_key_exists('allowAttribs', $options) && !array_key_exists('allowComments', $options))) {
+        } else if ((!is_array($options)) || (is_array($options) && !array_key_exists_wrapper('allowTags', $options) &&
+            !array_key_exists_wrapper('allowAttribs', $options) && !array_key_exists_wrapper('allowComments', $options))) {
             $options = func_get_args();
             $temp['allowTags'] = array_shift($options);
             if (!empty($options)) {
@@ -99,15 +99,15 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
             $options = $temp;
         }
 
-        if (array_key_exists('allowTags', $options)) {
+        if (array_key_exists_wrapper('allowTags', $options)) {
             $this->setTagsAllowed($options['allowTags']);
         }
 
-        if (array_key_exists('allowAttribs', $options)) {
+        if (array_key_exists_wrapper('allowAttribs', $options)) {
             $this->setAttributesAllowed($options['allowAttribs']);
         }
 
-        if (array_key_exists('allowComments', $options)) {
+        if (array_key_exists_wrapper('allowComments', $options)) {
             $this->setCommentsAllowed($options['allowComments']);
         }
     }
@@ -331,8 +331,8 @@ class Zend_Filter_StripTags implements Zend_Filter_Interface
                 $attributeValue     = empty($matches[3][$index]) ? $matches[5][$index] : $matches[3][$index];
 
                 // If the attribute is not allowed, then remove it entirely
-                if (!array_key_exists($attributeName, $this->_tagsAllowed[$tagName])
-                    && !array_key_exists($attributeName, $this->_attributesAllowed)) {
+                if (!array_key_exists_wrapper($attributeName, $this->_tagsAllowed[$tagName])
+                    && !array_key_exists_wrapper($attributeName, $this->_attributesAllowed)) {
                     continue;
                 }
                 // Add the attribute to the accumulator

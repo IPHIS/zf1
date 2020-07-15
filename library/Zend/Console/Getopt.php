@@ -740,7 +740,7 @@ class Zend_Console_Getopt
             if ($rule['param'] === 'required') {
                 $defined = false;
                 foreach ($rule['alias'] as $alias) {
-                    $defined = $defined === true ? true : array_key_exists($alias, $this->_options);
+                    $defined = $defined === true ? true : array_key_exists_wrapper($alias, $this->_options);
                 }
                 if ($defined === false) {
                     require_once 'Zend/Console/Getopt/Exception.php';

@@ -120,27 +120,27 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
     protected function _initDbAdapter()
     {
         $options = &$this->_options['driverOptions'];
-        if (!array_key_exists('type', $options)) {
+        if (!array_key_exists_wrapper('type', $options)) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Configuration array must have a key for 'type' for the database type to use");
         }
 
-        if (!array_key_exists('host', $options)) {
+        if (!array_key_exists_wrapper('host', $options)) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Configuration array must have a key for 'host' for the host to use");
         }
 
-        if (!array_key_exists('username', $options)) {
+        if (!array_key_exists_wrapper('username', $options)) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Configuration array must have a key for 'username' for the username to use");
         }
 
-        if (!array_key_exists('password', $options)) {
+        if (!array_key_exists_wrapper('password', $options)) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Configuration array must have a key for 'password' for the password to use");
         }
 
-        if (!array_key_exists('dbname', $options)) {
+        if (!array_key_exists_wrapper('dbname', $options)) {
             require_once 'Zend/Queue/Exception.php';
             throw new Zend_Queue_Exception("Configuration array must have a key for 'dbname' for the database to use");
         }
@@ -250,7 +250,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
             }
         }
 
-        if (array_key_exists($name, $this->_queues)) {
+        if (array_key_exists_wrapper($name, $this->_queues)) {
             unset($this->_queues[$name]);
         }
 
@@ -514,7 +514,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
      */
     protected function getQueueId($name)
     {
-        if (array_key_exists($name, $this->_queues)) {
+        if (array_key_exists_wrapper($name, $this->_queues)) {
             return $this->_queues[$name];
         }
 

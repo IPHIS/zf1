@@ -1233,19 +1233,19 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      */
     public function setOptions($options)
     {
-        if (array_key_exists('allow', $options)) {
+        if (array_key_exists_wrapper('allow', $options)) {
             $this->setAllow($options['allow']);
         }
 
-        if (array_key_exists('idn', $options)) {
+        if (array_key_exists_wrapper('idn', $options)) {
             $this->setValidateIdn($options['idn']);
         }
 
-        if (array_key_exists('tld', $options)) {
+        if (array_key_exists_wrapper('tld', $options)) {
             $this->setValidateTld($options['tld']);
         }
 
-        if (array_key_exists('ip', $options)) {
+        if (array_key_exists_wrapper('ip', $options)) {
             $this->setIpValidator($options['ip']);
         }
 
@@ -1419,7 +1419,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                 // First check TLD
                 $matches = array();
                 if (preg_match('/([^.]{2,63})$/iu', end($domainParts), $matches)
-                    || (array_key_exists(end($domainParts), $this->_validIdns))) {
+                    || (array_key_exists_wrapper(end($domainParts), $this->_validIdns))) {
                     reset($domainParts);
 
                     // Hostname characters are: *(label dot)(label dot label); max 254 chars
@@ -1487,8 +1487,8 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                             $status = preg_match($regexChar, $domainPart);
                             if ($status > 0) {
                                 $length = 63;
-                                if (array_key_exists(strtoupper($this->_tld), $this->_idnLength)
-                                    && (array_key_exists($regexKey, $this->_idnLength[strtoupper($this->_tld)]))) {
+                                if (array_key_exists_wrapper(strtoupper($this->_tld), $this->_idnLength)
+                                    && (array_key_exists_wrapper($regexKey, $this->_idnLength[strtoupper($this->_tld)]))) {
                                     $length = $this->_idnLength[strtoupper($this->_tld)];
                                 }
 

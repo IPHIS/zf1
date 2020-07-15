@@ -397,7 +397,7 @@ abstract class Zend_Db_Statement implements Zend_Db_Statement_Interface
      */
     public function getAttribute($key)
     {
-        if (array_key_exists($key, $this->_attribute)) {
+        if (array_key_exists_wrapper($key, $this->_attribute)) {
             return $this->_attribute[$key];
         }
     }

@@ -244,7 +244,7 @@ class Zend_Date extends Zend_Date_DateObject
         foreach ($options as $name => $value) {
             $name  = strtolower($name);
 
-            if (array_key_exists($name, self::$_options)) {
+            if (array_key_exists_wrapper($name, self::$_options)) {
                 switch($name) {
                     case 'format_type' :
                         if ((strtolower($value) != 'php') && (strtolower($value) != 'iso')) {
@@ -2813,15 +2813,15 @@ class Zend_Date extends Zend_Date_DateObject
                 }
             }
 
-            if (!array_key_exists('hour', $parsed)) {
+            if (!array_key_exists_wrapper('hour', $parsed)) {
                 $parsed['hour'] = 0;
             }
 
-            if (!array_key_exists('minute', $parsed)) {
+            if (!array_key_exists_wrapper('minute', $parsed)) {
                 $parsed['minute'] = 0;
             }
 
-            if (!array_key_exists('second', $parsed)) {
+            if (!array_key_exists_wrapper('second', $parsed)) {
                 $parsed['second'] = 0;
             }
 
@@ -2978,15 +2978,15 @@ class Zend_Date extends Zend_Date_DateObject
                 }
             }
 
-            if (!array_key_exists('day', $parsed)) {
+            if (!array_key_exists_wrapper('day', $parsed)) {
                 $parsed['day'] = 1;
             }
 
-            if (!array_key_exists('month', $parsed)) {
+            if (!array_key_exists_wrapper('month', $parsed)) {
                 $parsed['month'] = 1;
             }
 
-            if (!array_key_exists('year', $parsed)) {
+            if (!array_key_exists_wrapper('year', $parsed)) {
                 $parsed['year'] = 0;
             }
 

@@ -122,7 +122,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
      */
     public function getMember()
     {
-        if (array_key_exists('member', $this->_params)) {
+        if (array_key_exists_wrapper('member', $this->_params)) {
             return $this->_params['member'];
         } else {
             return null;
@@ -154,7 +154,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
      */
     public function getDirectOnly()
     {
-        if (array_key_exists('directOnly', $this->_params)) {
+        if (array_key_exists_wrapper('directOnly', $this->_params)) {
 
             if($this->_params['directOnly'] == 'true') {
                 return true;
@@ -192,7 +192,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
      */
     public function getStartGroupId()
     {
-        if (array_key_exists('start', $this->_params)) {
+        if (array_key_exists_wrapper('start', $this->_params)) {
             return $this->_params['start'];
         } else {
             return null;
@@ -215,7 +215,7 @@ class Zend_Gdata_Gapps_GroupQuery extends Zend_Gdata_Gapps_Query
             $uri .= '/' . $this->_groupId;
         }
 
-        if(array_key_exists('member', $this->_params)) {
+        if(array_key_exists_wrapper('member', $this->_params)) {
             $uri .= '/';
         }
 

@@ -156,7 +156,7 @@ class Zend_Gdata_Gapps_MemberQuery extends Zend_Gdata_Gapps_Query
      */
     public function getStartMemberId()
     {
-        if (array_key_exists('start', $this->_params)) {
+        if (array_key_exists_wrapper('start', $this->_params)) {
             return $this->_params['start'];
         } else {
             return null;

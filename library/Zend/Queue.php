@@ -123,13 +123,13 @@ class Zend_Queue implements Countable
         }
 
         // Make sure all defaults are appropriately set.
-        if (!array_key_exists('timeout', $options)) {
+        if (!array_key_exists_wrapper('timeout', $options)) {
             $options[self::TIMEOUT] = self::VISIBILITY_TIMEOUT;
         }
-        if (array_key_exists('messageClass', $options)) {
+        if (array_key_exists_wrapper('messageClass', $options)) {
             $this->setMessageClass($options['messageClass']);
         }
-        if (array_key_exists('messageSetClass', $options)) {
+        if (array_key_exists_wrapper('messageSetClass', $options)) {
             $this->setMessageSetClass($options['messageSetClass']);
         }
 
@@ -184,7 +184,7 @@ class Zend_Queue implements Countable
      */
     public function hasOption($name)
     {
-        return array_key_exists($name, $this->_options);
+        return array_key_exists_wrapper($name, $this->_options);
     }
 
     /**

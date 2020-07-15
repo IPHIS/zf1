@@ -249,7 +249,7 @@ class Zend_Db_Select
             $correlationName = current($correlationNameKeys);
         }
 
-        if (!array_key_exists($correlationName, $this->_parts[self::FROM])) {
+        if (!array_key_exists_wrapper($correlationName, $this->_parts[self::FROM])) {
             /**
              * @see Zend_Db_Select_Exception
              */
@@ -665,7 +665,7 @@ class Zend_Db_Select
     public function getPart($part)
     {
         $part = strtolower($part);
-        if (!array_key_exists($part, $this->_parts)) {
+        if (!array_key_exists_wrapper($part, $this->_parts)) {
             require_once 'Zend/Db/Select/Exception.php';
             throw new Zend_Db_Select_Exception("Invalid Select part '$part'");
         }
@@ -720,7 +720,7 @@ class Zend_Db_Select
     {
         if ($part == null) {
             $this->_parts = self::$_partsInit;
-        } elseif (array_key_exists($part, self::$_partsInit)) {
+        } elseif (array_key_exists_wrapper($part, self::$_partsInit)) {
             $this->_parts[$part] = self::$_partsInit[$part];
         }
         return $this;
@@ -802,7 +802,7 @@ class Zend_Db_Select
 
         $lastFromCorrelationName = null;
         if (!empty($correlationName)) {
-            if (array_key_exists($correlationName, $this->_parts[self::FROM])) {
+            if (array_key_exists_wrapper($correlationName, $this->_parts[self::FROM])) {
                 /**
                  * @see Zend_Db_Select_Exception
                  */
@@ -909,7 +909,7 @@ class Zend_Db_Select
             $dot = strrpos($name,'.');
             $c = ($dot === false) ? $name : substr($name, $dot+1);
         }
-        for ($i = 2; array_key_exists($c, $this->_parts[self::FROM]); ++$i) {
+        for ($i = 2; array_key_exists_wrapper($c, $this->_parts[self::FROM]); ++$i) {
             $c = $name . '_' . (string) $i;
         }
         return $c;

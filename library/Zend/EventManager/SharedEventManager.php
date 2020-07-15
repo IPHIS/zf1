@@ -74,7 +74,7 @@ class Zend_EventManager_SharedEventManager implements Zend_EventManager_SharedEv
     {
         $ids = (array) $id;
         foreach ($ids as $id) {
-            if (!array_key_exists($id, $this->identifiers)) {
+            if (!array_key_exists_wrapper($id, $this->identifiers)) {
                 $this->identifiers[$id] = new Zend_EventManager_EventManager();
             }
             $this->identifiers[$id]->attach($event, $callback, $priority);
@@ -90,7 +90,7 @@ class Zend_EventManager_SharedEventManager implements Zend_EventManager_SharedEv
      */
     public function detach($id, Zend_Stdlib_CallbackHandler $listener)
     {
-        if (!array_key_exists($id, $this->identifiers)) {
+        if (!array_key_exists_wrapper($id, $this->identifiers)) {
             return false;
         }
         return $this->identifiers[$id]->detach($listener);
@@ -104,7 +104,7 @@ class Zend_EventManager_SharedEventManager implements Zend_EventManager_SharedEv
      */
     public function getEvents($id)
     {
-        if (!array_key_exists($id, $this->identifiers)) {
+        if (!array_key_exists_wrapper($id, $this->identifiers)) {
             return false;
         }
         return $this->identifiers[$id]->getEvents();
@@ -119,7 +119,7 @@ class Zend_EventManager_SharedEventManager implements Zend_EventManager_SharedEv
      */
     public function getListeners($id, $event)
     {
-        if (!array_key_exists($id, $this->identifiers)) {
+        if (!array_key_exists_wrapper($id, $this->identifiers)) {
             return false;
         }
         return $this->identifiers[$id]->getListeners($event);
@@ -134,7 +134,7 @@ class Zend_EventManager_SharedEventManager implements Zend_EventManager_SharedEv
      */
     public function clearListeners($id, $event = null)
     {
-        if (!array_key_exists($id, $this->identifiers)) {
+        if (!array_key_exists_wrapper($id, $this->identifiers)) {
             return false;
         }
 

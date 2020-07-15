@@ -57,7 +57,7 @@ class Zend_Feed_Reader_Extension_CreativeCommons_Feed
     public function getLicenses()
     {
         $name = 'licenses';
-        if (array_key_exists($name, $this->_data)) {
+        if (array_key_exists_wrapper($name, $this->_data)) {
             return $this->_data[$name];
         }
 

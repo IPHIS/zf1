@@ -150,7 +150,7 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
         }
 
         // Set Präfix Path
-        if (array_key_exists('filterPrefixPath', $options)) {
+        if (array_key_exists_wrapper('filterPrefixPath', $options)) {
             if (!is_scalar($options['filterPrefixPath'])) {
                 foreach ($options['filterPrefixPath'] as $prefix => $path) {
                     $this->addFilterPrefixPath($prefix, $path);
@@ -158,19 +158,19 @@ class Zend_Filter_Inflector implements Zend_Filter_Interface
             }
         }
 
-        if (array_key_exists('throwTargetExceptionsOn', $options)) {
+        if (array_key_exists_wrapper('throwTargetExceptionsOn', $options)) {
             $this->setThrowTargetExceptionsOn($options['throwTargetExceptionsOn']);
         }
 
-        if (array_key_exists('targetReplacementIdentifier', $options)) {
+        if (array_key_exists_wrapper('targetReplacementIdentifier', $options)) {
             $this->setTargetReplacementIdentifier($options['targetReplacementIdentifier']);
         }
 
-        if (array_key_exists('target', $options)) {
+        if (array_key_exists_wrapper('target', $options)) {
             $this->setTarget($options['target']);
         }
 
-        if (array_key_exists('rules', $options)) {
+        if (array_key_exists_wrapper('rules', $options)) {
             $this->addRules($options['rules']);
         }
 

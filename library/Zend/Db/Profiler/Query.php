@@ -164,7 +164,7 @@ class Zend_Db_Profiler_Query
      */
     public function bindParams(array $params)
     {
-        if (array_key_exists(0, $params)) {
+        if (array_key_exists_wrapper(0, $params)) {
             array_unshift($params, null);
             unset($params[0]);
         }

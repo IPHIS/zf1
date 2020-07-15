@@ -214,12 +214,12 @@ class Zend_Cache_Core
             Zend_Cache::throwException("Incorrect option name!");
         }
         $name = strtolower($name);
-        if (array_key_exists($name, $this->_options)) {
+        if (array_key_exists_wrapper($name, $this->_options)) {
             // This is a Core option
             $this->_setOption($name, $value);
             return;
         }
-        if (array_key_exists($name, $this->_specificOptions)) {
+        if (array_key_exists_wrapper($name, $this->_specificOptions)) {
             // This a specic option of this frontend
             $this->_specificOptions[$name] = $value;
             return;
@@ -237,12 +237,12 @@ class Zend_Cache_Core
     {
         $name = strtolower($name);
 
-        if (array_key_exists($name, $this->_options)) {
+        if (array_key_exists_wrapper($name, $this->_options)) {
             // This is a Core option
             return $this->_options[$name];
         }
 
-        if (array_key_exists($name, $this->_specificOptions)) {
+        if (array_key_exists_wrapper($name, $this->_specificOptions)) {
             // This a specic option of this frontend
             return $this->_specificOptions[$name];
         }
@@ -260,7 +260,7 @@ class Zend_Cache_Core
      */
     private function _setOption($name, $value)
     {
-        if (!is_string($name) || !array_key_exists($name, $this->_options)) {
+        if (!is_string($name) || !array_key_exists_wrapper($name, $this->_options)) {
             Zend_Cache::throwException("Incorrect option name : $name");
         }
         if ($name == 'lifetime' && empty($value)) {

@@ -104,11 +104,11 @@ class Zend_Service_Rackspace_Servers_Server
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception(self::ERROR_PARAM_CONSTRUCT);
         }
-        if (!array_key_exists('name', $data)) {
+        if (!array_key_exists_wrapper('name', $data)) {
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception(self::ERROR_PARAM_NO_NAME);
         }
-        if (!array_key_exists('id', $data)) {
+        if (!array_key_exists_wrapper('id', $data)) {
             require_once 'Zend/Service/Rackspace/Servers/Exception.php';
             throw new Zend_Service_Rackspace_Servers_Exception(self::ERROR_PARAM_NO_ID);
         }
