@@ -15,7 +15,9 @@
         "psr-0": {
             "Zend_": "library/"
         },
-        "files": ["library/helper.php"]
+        "files": [
+            "helper.php"
+        ]
     },
     "include-path": [
         "library/"
